@@ -1,10 +1,12 @@
 .navbar{
     position: fixed;
-    padding: 1em 5em 1em 1em;
+    top: 0;
+    padding: 1em 5em 1em 6em;
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    background-color: #FCE8E8;
 }
 
 .logo{
