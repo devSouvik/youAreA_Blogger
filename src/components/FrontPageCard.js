@@ -5,7 +5,6 @@ import person from "../assets/images/person.jpg"
 const FrontPageCard = (props) => {
     return (
         <div className={classes.main}>
-           <div className={classes.index}></div> 
            <div className={classes.body}>
                <div className={classes["body__header"]}>
                    <div className={classes.imagediv}>
