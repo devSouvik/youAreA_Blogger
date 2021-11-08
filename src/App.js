@@ -1,11 +1,14 @@
+
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import './App.css';
 import FrontPage from './pages/FrontPage';
+
 
 function App() {
   return (
     <Router>
       <Routes>
+
          <Route path="/" element={<FrontPage />} />
          
         
@@ -17,4 +20,7 @@ function App() {
   )
 };
 export default App;
+
+
+
 
