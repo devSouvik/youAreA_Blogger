@@ -1,18 +1,18 @@
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
     <Router>
-      <Switch>
-         <Route path="/" exact>
-           <h1>Add and change routes appropriately</h1>
-         </Route>
-         <Route path="*">
-            <h1>Page not found</h1>
-         </Route>
-      </Switch>
+      <Routes>
+        <Route
+          path="/"
+          element={<h1>Add and change routes appropriately</h1>}
+        />
+
+        <Route path="*" element={<h1>Page not found</h1>} />
+      </Routes>
     </Router>
-  )
-};
+  );
+}
 export default App;
