@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import classes from "./Header.module.css";
-import image from "../assets/images/logos/small-logo.png";
+import image from "../../assets/images/logos/small-logo.png";
 
 const Header = () => {
   return (

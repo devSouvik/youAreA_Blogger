@@ -1,5 +1,5 @@
 import classes from './FrontPageCard.module.css'
-import person from "../assets/images/person.jpg"
+import person from "../../assets/images/person.jpg"
 
 
 const FrontPageCard = (props) => {
