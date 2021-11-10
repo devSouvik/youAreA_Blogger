@@ -4,12 +4,22 @@
 }
 .dropdown{
     position: absolute;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     height: 200px;
     width: 150px;
     background-color: rgb(199, 144, 144);
     border-radius: 15px;
-    border: 1px solid blueviolet;
+    /* border: 1px solid blueviolet; */
     right: 0;
-    top: 35px;
+    top: 30px;
+    left: -140px;
+}
+.dropdown::before{
+    content: " ";
+    position: absolute;
+    right: 50px;
+    top: -10px;
+    border-bottom: 10px solid brown;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
 }
