@@ -19,11 +19,14 @@ const DefaultNavbar = () => {
     
   return (
     <nav className={classes.DefaultNavbar}>
+
       <a href="#">
         <img src={image} alt="Blogger" className={classes.logo} />
       </a>
 
       <div className={classes.rightContainer}>
+      <a href="#" className={classes.startButton}>
+            Write </a>
         <form className={classes.searchform} onSubmit={submitHandler}>
           <img
             src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"
@@ -31,7 +34,9 @@ const DefaultNavbar = () => {
           />
           <input type="text" name="search" className={searchClasses} autoComplete="off" onChange={searchInputChangehandler} />
         </form>
+        
         <DropDown/>
+        
       </div>
     </nav>
   );

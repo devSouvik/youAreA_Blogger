@@ -37,6 +37,7 @@
     left: 10px;
     position: absolute;
     z-index: -1;
+    /* background-color: aqua; */
 }
 .search:focus, .active{
     width: 13em;
@@ -44,4 +45,18 @@
     border-radius: 20px;
     border: 1px solid rgb(199, 196, 196);
     padding-left: 40px;
+}
+.startButton{
+    padding: 7px 15px;
+    margin: 0 15px;
+    border-radius: 50px;
+    background-color: #f1eeee;
+    border: 1px solid #c2c1c1;
+    color: rgb(5, 5, 5);
+    /* box-shadow: 1px 4px 4px #6b6b6b; */
+    font-size: 15px;
+    font-weight: 500;
+}
+.startButton:hover{
+    background-color: #d8cbcb;
 }
