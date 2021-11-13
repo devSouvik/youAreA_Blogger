@@ -6,8 +6,8 @@
     justify-content: space-between;
     width: 100%;
     align-items: center;
-    background-color: #FCE8E8;
-    box-shadow: 1px 5px 5px #c5c1c1;
+    background-color: #ffffff;
+    box-shadow: 1px 5px 5px #dbd9d9;
 }
 
 .logo{
@@ -50,7 +50,7 @@
     padding: 7px 15px;
     margin: 0 15px;
     border-radius: 50px;
-    background-color: #f1eeee;
+    background-color: #fffafa;
     border: 1px solid #c2c1c1;
     color: rgb(5, 5, 5);
     /* box-shadow: 1px 4px 4px #6b6b6b; */

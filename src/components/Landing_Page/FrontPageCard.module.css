@@ -11,10 +11,11 @@
  h3,h5{
      margin: 0;
  }
- p{
+ .subtitle{
      margin: 0;
      font-size: 14px;
      color: grey;
+     padding-left: 45px;
  }
 .body__header{
     display: flex;
@@ -39,7 +40,4 @@
     border-radius: 50px;
     background-color: rgb(143, 139, 139);
     margin-right: 8px;
-}
-.subtitle{
-    padding-left: 45px;
 }
