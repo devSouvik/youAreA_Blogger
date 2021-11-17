@@ -44,7 +44,10 @@ const ProfileBody = () => {
   return (
     <div className={classes.main}>
       <ProfileHeader />
-
+      <div className={classes.seperatordiv}>
+        <p> My Posts</p>
+        <hr />
+      </div>
       {blogs.map((blog, index) => (
         <ProfilePageCard key={index} {...blog} />
       ))}

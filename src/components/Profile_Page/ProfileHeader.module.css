@@ -17,6 +17,7 @@
 }
 .username {
   margin-bottom: 9px;
+  font-family: 'Prosto One', cursive;
 }
 .profession {
   margin-top: 1.5px;
@@ -54,6 +55,7 @@
 }
 .name {
   margin-top: 0;
+  font-family: 'Miltonian Tattoo', cursive;
 }
 .bio {
   margin-top: 2px;

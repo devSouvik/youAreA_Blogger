@@ -12,9 +12,13 @@
     box-shadow: 1px 5px 5px #dbd9d9;
 
 }
-.bio{
-    font-weight: 400;
+.bio{   
+    font-family: 'Righteous', cursive;
+    font-style: normal;
+    font-weight: normal;
     font-size: 16px;
+    line-height: 30px;
+    color: #979595;
 }
 .body{
     display: flex;
@@ -40,10 +44,13 @@
     margin-bottom: 5px;
     /* padding-left: 45px; */
     padding-top: 10px;
+    font-family: 'Righteous', cursive;
+    font-weight: 600;
 }
 .header__title{
     font-size: 15px;
     font-weight: 600;
+    font-family: 'Reem Kufi', sans-serif;
 }
 .image, .imagediv {
     width:40px;

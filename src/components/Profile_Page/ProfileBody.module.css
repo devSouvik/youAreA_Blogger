@@ -13,3 +13,19 @@
   border-bottom: 1px solid rgb(206, 203, 203);
   background-color: rgb(255, 255, 255);
 }
+.seperatordiv{
+  display: flex;
+  width: 100%;
+  padding: 0 150px;
+  align-items: center;
+}
+.seperatordiv hr{
+  flex-grow: 1;
+
+}
+.seperatordiv p{
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Righteous', cursive;
+}
