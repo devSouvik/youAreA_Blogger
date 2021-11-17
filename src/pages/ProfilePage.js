@@ -5,6 +5,11 @@ const ProfilePage = () => {
   return (
     <div>
       <Navbar />
+      <div>
+        <p>
+          Posts <hr />
+        </p>
+      </div>
       <ProfileBody />
     </div>
   );
