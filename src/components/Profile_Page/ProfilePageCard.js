@@ -16,7 +16,7 @@ const ProfilePageCard = (props) => {
         <h3 className={classes.bio}>{props.bio}</h3>
         <p className={classes.subtitle}>
           {props.date}. {props.readTime} read.
-          <button className={classes.button}>Job</button>
+          <button className={classes.button}>{props.profession}</button>
         </p>
       </div>
     </div>

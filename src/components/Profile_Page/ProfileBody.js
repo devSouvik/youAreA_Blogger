@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import classes from "./ProfileBody.module.css";
 import ProfileHeader from "./ProfileHeader";
 import ProfilePageCard from "./ProfilePageCard";
@@ -9,6 +10,7 @@ const blogs = [
     bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     date: "22 Oct",
     readTime: "5 min",
+    profession: "Job",
   },
   {
     author: "Anushree das",
@@ -16,6 +18,7 @@ const blogs = [
     bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     date: "22 Oct",
     readTime: "5 min",
+    profession: "Job",
   },
   {
     author: "Anushree das",
@@ -23,6 +26,7 @@ const blogs = [
     bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     date: "22 Oct",
     readTime: "5 min",
+    profession: "Job",
   },
   {
     author: "Anushree das",
@@ -30,6 +34,7 @@ const blogs = [
     bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     date: "22 Oct",
     readTime: "5 min",
+    profession: "Job",
   },
   {
     author: "Anushree das",
@@ -37,10 +42,21 @@ const blogs = [
     bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
     date: "22 Oct",
     readTime: "5 min",
+    profession: "Technology",
   },
 ];
 
 const ProfileBody = () => {
+  // const [loading, setLoading] = useState(false);
+  // useEffect(() => {
+  //   console.log("useEffect initiated");
+  //   setLoading(true);
+  //   console.log("Fetching data");
+  //   setTimeout(() => {
+  //     console.log("Data fetched");
+  //     setLoading(false);
+  //   }, 2000);
+  // }, []);
   return (
     <div className={classes.main}>
       <ProfileHeader />
@@ -48,6 +64,8 @@ const ProfileBody = () => {
         <p> My Posts</p>
         <hr />
       </div>
+      {/* {loading && <p>Loading...</p>} */}
+      {/* {!loading && */}
       {blogs.map((blog, index) => (
         <ProfilePageCard key={index} {...blog} />
       ))}
