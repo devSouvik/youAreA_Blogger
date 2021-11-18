@@ -1,8 +1,11 @@
-
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import './App.css';
 import FrontPage from './pages/FrontPage';
 import ProfilePage from "./pages/ProfilePage";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+
 
 function App() {
   return (
@@ -15,7 +18,6 @@ function App() {
     </Router>
   )
 };
-
 export default App;
 
 
