@@ -21,6 +21,7 @@
     font-size: 19px;
     font-weight: 600;
     color: black;
+    font-family: 'Playfair Display SC', serif;
 }
 .startButton{
     padding: 15px;
@@ -31,6 +32,7 @@
     box-shadow: 1px 5px 5px #c5c1c1;
     font-size: 19px;
     font-weight: 500;
+    /* font-family: 'Playfair Display SC', serif; */
     
 }
 
