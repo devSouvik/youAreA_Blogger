@@ -1,0 +1,43 @@
+.main{
+    display: flex;
+    max-width: 30%;
+    margin: 0 1em;
+    margin-bottom: 25px;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+}
+ h3,h5{
+     margin: 0;
+ }
+ .subtitle{
+     margin: 0;
+     font-size: 14px;
+     color: grey;
+     padding-left: 45px;
+ }
+.body__header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+}
+
+.body__main{
+    margin-bottom: 5px;
+    padding-left: 45px;
+}
+.header__title{
+    font-size: 15px;
+    font-weight: 600;
+}
+.image, .imagediv {
+    width:40px;
+    height:40px;
+
+}
+.imagediv{
+    border-radius: 50px;
+    background-color: rgb(143, 139, 139);
+    margin-right: 8px;
+}

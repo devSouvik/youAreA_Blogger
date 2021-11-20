@@ -1,0 +1,65 @@
+.main {
+  display: flex;
+  justify-content: center;
+  width: 40vw;
+}
+.image {
+  height: 10em;
+  width: 10em;
+  color: rgb(59, 57, 57);
+  border-radius: 5em;
+  margin-top: 2.5em;
+  margin-right: 2em;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.username {
+  margin-bottom: 9px;
+  font-family: 'Prosto One', cursive;
+}
+.profession {
+  margin-top: 1.5px;
+  padding-top: 1px;
+  padding-bottom: 0;
+  font-size: 14px;
+  color: rgb(129, 127, 127);
+  font-weight: 600;
+}
+
+.connection {
+  display: flex;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  /* padding-left: 50px; */
+}
+.connectionitem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1px;
+}
+.connection h3 {
+  font-weight: 500;
+  /* margin: 0; */
+  padding-top: 1px;
+}
+.connection p {
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 0;
+  margin-top: 1px;
+  margin-bottom: 0;
+  /* padding-bottom: 1px; */
+}
+.name {
+  margin-top: 0;
+  font-family: 'Miltonian Tattoo', cursive;
+}
+.bio {
+  margin-top: 2px;
+  font-size: 16px;
+  /* width: 30%; */
+  margin-bottom: 5em;
+}

@@ -1,0 +1,63 @@
+.DefaultNavbar {
+  position: fixed;
+  top: 0;
+  padding: 0.5em 5em 0.5em 6em;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 1px 5px 5px #dbd9d9;
+}
+
+.logo,
+.imageAnchor {
+  /* width: 150px; */
+  height: 48px;
+}
+.rightContainer {
+  display: flex;
+  align-items: center;
+}
+.searchform {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search {
+  padding: 9px 10px 9px 32px;
+  transition: all 0.05s;
+  margin-right: 10px;
+  width: 30px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+.searchicon {
+  left: 10px;
+  position: absolute;
+  z-index: -1;
+  /* background-color: aqua; */
+}
+.search:focus,
+.active {
+  width: 13em;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid rgb(199, 196, 196);
+  padding-left: 40px;
+}
+.startButton {
+  padding: 7px 15px;
+  margin: 0 15px;
+  border-radius: 50px;
+  background-color: #fffafa;
+  border: 1px solid #c2c1c1;
+  color: rgb(5, 5, 5);
+  /* box-shadow: 1px 4px 4px #6b6b6b; */
+  font-size: 15px;
+  font-weight: 500;
+}
+.startButton:hover {
+  background-color: #d8cbcb;
+}

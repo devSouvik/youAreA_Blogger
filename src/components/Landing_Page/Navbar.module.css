@@ -1,0 +1,44 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    padding: 1em 5em 1em 6em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    background-color: #FCE8E8;
+}
+
+.logo{
+    height: 75px;
+}
+.rightContainer{
+    display: flex;
+    align-items: center;
+}
+.navItem{
+    padding: 0 30px 0 25px;
+    font-size: 19px;
+    font-weight: 600;
+    color: black;
+    font-family: 'Playfair Display SC', serif;
+}
+.startButton{
+    padding: 15px;
+    margin: 0 15px;
+    border-radius: 75px;
+    background-color: #726C6C;
+    color: whitesmoke;
+    box-shadow: 1px 5px 5px #c5c1c1;
+    font-size: 19px;
+    font-weight: 500;
+    /* font-family: 'Playfair Display SC', serif; */
+    
+}
+
+.startButton:hover{
+    background-color: #969292;
+}
+.navItem:hover{
+    color: rgb(92, 88, 88);
+}

@@ -1,0 +1,51 @@
+.main{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    /* width: 100vw; */
+    margin-top: 19vh;
+    padding-right: 15vw;
+    padding-left: 10vw;
+    border-bottom: 1px solid gray;
+}
+
+h1{
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Righteous', cursive;
+    font-weight: 400;
+}
+h4{
+    font-size: 20px;
+    font-family: 'Amiri', serif;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+}
+.small-logo{
+    height: 300px;
+    width: 300px;
+    box-shadow: 6px 7px 14px #c5c1c1;
+    border-radius: 150px;
+}
+
+.startButton{
+    padding: 15px;
+    border-radius: 75px;
+    background-color: whitesmoke;
+    color: rgb(2, 0, 0);
+    box-shadow: 1px 5px 5px #c5c1c1;
+    font-size: 19px;
+    font-weight: 500;
+    width: 160px;
+    text-align: center;
+    margin-bottom: 20px;
+    /* font-family: 'Playfair Display SC', serif; */
+}
+
+.startButton:hover{
+    background-color: #ccc7c7;
+}

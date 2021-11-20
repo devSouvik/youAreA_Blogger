@@ -1,0 +1,31 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: calc(48px + 1em);
+  /* padding: 1rem 3rem; */
+  min-height: 90vh;
+  /* width: 100vw; */
+  /* padding-top: 80px; */
+  /* padding-right: 15vw;
+    padding-left: 10vw; */
+  padding: 70px 0 5vw 0;
+  border-bottom: 1px solid rgb(206, 203, 203);
+  background-color: rgb(255, 255, 255);
+}
+.seperatordiv{
+  display: flex;
+  width: 100%;
+  padding: 0 150px;
+  align-items: center;
+}
+.seperatordiv hr{
+  flex-grow: 1;
+
+}
+.seperatordiv p{
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Righteous', cursive;
+}
