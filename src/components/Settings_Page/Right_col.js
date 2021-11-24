@@ -1,5 +1,5 @@
 import Form from "./Form";
-import user from "/home/souvik/dev/React.js/youAreA_Blogger/src/assets/images/user.jpg";
+import user from "../../assets/images/user.jpg";
 import "./Right_col.css";
 
 export default function Right_col() {
