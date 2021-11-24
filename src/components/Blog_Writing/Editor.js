@@ -6,6 +6,9 @@ import parse from "html-react-parser";
 
 export default function Editor() {
   const [articleData, setArticleData] = useState("");
+  const [showPost, setshowPost] = useState(false);
+
+  const finaldata = parse(articleData);
 
   const handleChange = (event, editor) => {
     const data = editor.getData();
@@ -20,12 +23,13 @@ export default function Editor() {
       <div className="py-3">
         <CKEditor editor={ClassicEditor} onChange={handleChange} />
       </div>
-      <button className="btn btn-dark d-flex ms-auto" onClick={postSubmit}>
-        Post
-      </button>
-      <h1 className="articlePreview">Your Preview </h1>
       <hr />
-      <div>{parse(articleData)}</div>
+
+      <button className="btn btn-dark" onClick={() => setshowPost(!showPost)}>
+        Toggle Article Preview
+      </button>
+
+      <div className="container px-5 py-5">{showPost && finaldata}</div>
     </div>
   );
 }
