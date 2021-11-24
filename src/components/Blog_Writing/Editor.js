@@ -19,7 +19,7 @@ export default function Editor() {
 
   return (
     <div className="container">
-      <h1 className="articleHeading">Write your story here</h1>
+      <h1 className="articleHeading">Write your story here . . .</h1>
       <div className="py-3">
         <CKEditor editor={ClassicEditor} onChange={handleChange} />
       </div>
