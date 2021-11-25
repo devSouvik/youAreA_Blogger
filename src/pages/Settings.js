@@ -1,5 +1,4 @@
 import DefaultNavbar from "../components/common/DefaultNavbar";
-import Form from "../components/Settings_Page/Form";
 import Left_col from "../components/Settings_Page/Left_col";
 import Right_col from "../components/Settings_Page/Right_col";
 import "./Settings.css";
