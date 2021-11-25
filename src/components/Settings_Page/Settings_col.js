@@ -3,9 +3,24 @@ import user from "../../assets/images/user.jpg";
 import "./Settings_col.css";
 import { useState } from "react";
 import Security from "./Security";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+toast.configure();
 export default function Settings_col() {
   const [view, setView] = useState(<Form />);
+
+  const notify = () => {
+    toast.success("Email sent, please check your inbox!", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   return (
     <>
@@ -18,7 +33,9 @@ export default function Settings_col() {
             </div>
             <hr />
             <div class=" element">
-              <div className="resetPassword">Change Password</div>
+              <div className="resetPassword" onClick={notify}>
+                Change Password
+              </div>
             </div>
             <hr />
             <div class="element">
