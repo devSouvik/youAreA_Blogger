@@ -5,6 +5,7 @@ import { useState } from "react";
 import Security from "./Security";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Reset_pass from "./Reset_pass";
 
 toast.configure();
 export default function Settings_col() {
@@ -33,8 +34,13 @@ export default function Settings_col() {
             </div>
             <hr />
             <div class=" element">
-              <div className="resetPassword" onClick={notify}>
-                Change Password
+              <div
+                className="resetPassword"
+                onClick={() => {
+                  setView(<Reset_pass />);
+                }}
+              >
+                Reset Password
               </div>
             </div>
             <hr />
