@@ -8,9 +8,9 @@
     display: flex;
     flex-direction: column;
 }
- h3,h5{
+ /* h3,h5{
      margin: 0;
- }
+ } */
  .subtitle{
      margin: 0;
      font-size: 14px;

@@ -9,14 +9,14 @@
     border-bottom: 1px solid gray;
 }
 
-h1{
+.left h1{
     font-size: 48px;
     margin-top: 0;
     margin-bottom: 0;
     font-family: 'Righteous', cursive;
     font-weight: 400;
 }
-h4{
+.left h4{
     font-size: 20px;
     font-family: 'Amiri', serif;
 }
