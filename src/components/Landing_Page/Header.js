@@ -11,12 +11,12 @@ const Header = () => {
           It's easy and free to post your thinking on any topic and connect with
           millons of readers.
         </h4>
-        <a  href="#" className={classes.startButton}>
-          Start Writing{" "}
+        <a href="#" className={classes.startButton}>
+          Start Writing
         </a>
       </div>
       <div></div>
-      <img className={classes["small-logo"]} src={image} alt="brand-logo"/>
+      <img className={classes["small-logo"]} src={image} alt="brand-logo" />
     </div>
   );
 };

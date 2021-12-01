@@ -23,9 +23,7 @@ const DefaultNavbar = () => {
       </Link>
 
       <div className={classes.rightContainer}>
-        <a href="#" className={classes.startButton}>
-          Write{" "}
-        </a>
+        <button className={classes.startButton}>Write</button>
         <form className={classes.searchform} onSubmit={submitHandler}>
           <img
             src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"
