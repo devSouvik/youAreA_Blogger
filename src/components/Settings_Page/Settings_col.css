@@ -23,11 +23,12 @@
 }
 
 .listClass {
-  margin-top: 10%;
+  margin-top: 20%;
 }
 
 .element {
-  margin: 1rem;
+  margin-top: 24%;
+  margin-left: 10%;
 }
 
 hr {
@@ -44,4 +45,8 @@ hr {
 
 .editUser {
   cursor: pointer;
+}
+
+.left-col {
+  margin-bottom: 5%;
 }

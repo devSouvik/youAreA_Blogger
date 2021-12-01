@@ -12,7 +12,7 @@ export default function Form() {
 
   return (
     <div>
-      <div className="container py-5 px-5 ">
+      <div className="container py-4 px-5 ">
         <form>
           <div className="form-group row py-2">
             <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
