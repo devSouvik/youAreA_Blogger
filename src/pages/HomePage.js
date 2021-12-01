@@ -31,28 +31,28 @@ const dumyList = [
     flare: "Culture",
   },
   {
-    id: 3,
+    id: 4,
     title: "third blog",
     author: "shyam",
     desc: "this is our third blog",
     flare: "Culture",
   },
   {
-    id: 3,
+    id: 5,
     title: "third blog",
     author: "shyam",
     desc: "this is our third blog",
     flare: "Culture",
   },
   {
-    id: 3,
+    id: 6,
     title: "third blog",
     author: "shyam",
     desc: "this is our third blog",
     flare: "Culture",
   },
   {
-    id: 3,
+    id: 7,
     title: "third blog",
     author: "shyam",
     desc: "this is our third blog",
@@ -90,6 +90,7 @@ function HomePage() {
               {dumyList.map((blog) => {
                 return (
                   <BlogCard
+                    key={blog.id}
                     title={blog.title}
                     author={blog.author}
                     desc={blog.desc}
@@ -100,8 +101,15 @@ function HomePage() {
             <Col xs={6} md={4} lg={4}>
               <div class="sticky-md-top">
                 <Genres />
+                <p className="userListHeading">
+                  <strong> Whom To Follow - </strong>
+                </p>
                 {dummyUserList.map((user) => {
-                  return <User name={user.name} bio={user.bio} />;
+                  return (
+                    <div className="userList">
+                      <User key={user.id} name={user.name} bio={user.bio} />
+                    </div>
+                  );
                 })}
               </div>
             </Col>
