@@ -1,5 +1,5 @@
 .DefaultNavbar {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   padding: 0.5em 5em 0.5em 6em;
   display: flex;
