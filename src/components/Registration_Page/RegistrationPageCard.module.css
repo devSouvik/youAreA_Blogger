@@ -22,20 +22,20 @@
     align-items: center;
 }
 
-/* .main div {
+.main div {
     margin: 1em 0;
-} */
+}
 
-.main h2 {
-    font-weight: 600;
+.main h3 {
     color: black;
-    font-size: 28px;
+    font-weight: 600;
+    padding-bottom: 14px;
+    font-size: 27px;
 }
 
 .inputDiv {
     display: flex;
     flex-direction: column;
-    margin: 1em 0;
 }
 
 .input {
@@ -54,41 +54,29 @@
     color: white;
     border-radius: 6px;
     padding: 0.6em 1.7em;
-    margin-top: 2em;
+    margin-top: 1em;
     font-size: 16px;
     font-weight: 600;
+}
+
+.loginButton:disabled {
+    cursor: not-allowed;
 }
 
 .loginButton:hover {
     cursor: pointer;
 }
 
-.forgetpassworddiv {
-    align-self: flex-end;
-    margin: 0;
-}
-
-.forgetpassword {
-    color: rgb(0, 140, 255);
-    font-size: 0.9em;
-    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-
-}
-
-.main h6 {
-    font-size: 14px;
-    margin: 1em 0;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.createaccount {
-    color: rgb(0, 140, 255);
-}
-
-
 .label {
     color: rgb(0, 0, 0);
     font-weight: 600;
     font-size: 16px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.error {
+    font-size: 13px;
+    margin-top: 4px;
+    color: rgb(224, 37, 37);
+    margin-bottom: 0;
 }

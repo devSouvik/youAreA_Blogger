@@ -7,13 +7,15 @@ import Settings from "./pages/Settings";
 import HomePage from "./pages/HomePage";
 import "./App.css";
 import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<FrontPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signin" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
         <Route path="/profile-page" element={<ProfilePage />} />
         <Route path="/blog-write" element={<Blog_writing />} />
         <Route path="/settings" element={<Settings />} />

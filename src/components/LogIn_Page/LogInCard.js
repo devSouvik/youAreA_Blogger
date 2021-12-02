@@ -43,7 +43,7 @@ const LogInCard = () => {
             forget password
           </Link>
         </div>
-        <button className={classes.loginButton}>Log In</button>
+        <button className={classes.loginButton}>Sign In</button>
         <h6>or</h6>
         <Link className={classes.createaccount} to="/register">
           Create account
