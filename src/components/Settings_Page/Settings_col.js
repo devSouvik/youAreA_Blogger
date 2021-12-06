@@ -6,10 +6,10 @@ import Security from "./Security";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Reset_pass from "./Reset_pass";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Stack from "react-bootstrap/Stack";
+// import Col from "react-bootstrap/Col";
+// import Row from "react-bootstrap/Row";
+// import Container from "react-bootstrap/Container";
+// import Stack from "react-bootstrap/Stack";
 
 toast.configure();
 export default function Settings_col() {
@@ -76,7 +76,7 @@ export default function Settings_col() {
           </div>
         </div>
       </div> */}
-      <Container>
+      {/* <Container>
         <Row>
           <Col md={4} className="left-col">
             <Stack gap={5} className="element">
@@ -111,7 +111,7 @@ export default function Settings_col() {
             </Stack>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </>
   );
 }

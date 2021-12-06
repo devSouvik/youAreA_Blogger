@@ -92,3 +92,10 @@
     font-size: 16px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.error {
+    font-size: 13px;
+    margin-top: 4px;
+    color: rgb(224, 37, 37);
+    margin-bottom: 0;
+}

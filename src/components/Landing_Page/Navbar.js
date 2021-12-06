@@ -1,5 +1,6 @@
 import classes from "./Navbar.module.css";
 import logo from "../../assets/images/logos/logo.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -12,12 +13,12 @@ const Navbar = () => {
         <a href="#" className={classes.navItem}>
           Write
         </a>
-        <a href="#" className={classes.navItem}>
+        <Link to="signin" className={classes.navItem}>
           Sign In
-        </a>
-        <a href="#" className={classes.startButton}>
-          Get Started{" "}
-        </a>
+        </Link>
+        <Link to="register" className={classes.startButton}>
+          Get Started
+        </Link>
       </div>
     </nav>
   );

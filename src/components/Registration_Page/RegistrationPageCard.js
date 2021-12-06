@@ -1,52 +1,66 @@
-import classes from "./RegistrationPageCard.module.css";
+import { doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import * as Yup from "yup";
+
 import image from "../../assets/images/bg3.jpg";
-import { useRef, useState } from "react";
 // import { Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import app from "../../firebase";
+import { auth, db } from "../../firebase";
+import classes from "./RegistrationPageCard.module.css";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import loader from "../../assets/infinityloader.svg";
+// import { BeatLoader } from "react-spinners";
+
+const initialValue = {
+  username: "",
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+const validationSchema = Yup.object({
+  username: Yup.string().required("Username is required"),
+  name: Yup.string().required("Name is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  password: Yup.string()
+    .required("Password is required")
+    .min(6, "Password should be atleast 6 characters"),
+  confirmPassword: Yup.string()
+    .required("Confirm password is required")
+    .oneOf([Yup.ref("password")], "Passwords do not match"),
+});
 
 const RegistrationPageCard = () => {
-  const auth = getAuth();
-
-  const username = useRef();
-  const name = useRef();
-  const email = useRef();
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  console.log(process.env.REACT_APP_FIREBASE_API_KEY);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!passwordIsValid || !passwordMatch) return;
-    createUserWithEmailAndPassword(auth, email.current.value, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log("Success", user);
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
-      });
+  const handleSubmit = async (values, { setSubmitting }) => {
+    setSubmitting(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+      if (userCredential && userCredential.user.uid) {
+        const docRef = await setDoc(doc(db, "users", userCredential.user.uid), {
+          username: values.username,
+          name: values.name,
+          email: values.email,
+        });
+        console.log(docRef);
+      }
+      // Signed in
+      const user = userCredential.user;
+      console.log("Success", user);
+      // ...
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      // ..
+    } finally {
+      setSubmitting(false);
+    }
   };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-
-  const passwordMatch =
-    password.length > 0 && confirmPassword.length > 0
-      ? password === confirmPassword
-      : true;
-  const passwordIsValid = password.length === 0 || password.length > 6;
 
   return (
     <div
@@ -55,85 +69,108 @@ const RegistrationPageCard = () => {
         backgroundImage: `url(${image})`,
       }}
     >
-      <form onSubmit={handleSubmit} className={classes.main}>
-        <h3>Create Account...</h3>
-        <div className={classes.inputDiv}>
-          <label htmlFor="username" className={classes.label}>
-            Username
-          </label>
-          <input
-            type="username"
-            name="username"
-            id="username"
-            ref={username}
-            autoComplete="off"
-            className={classes.input}
-          />
-        </div>
-        <div className={classes.inputDiv}>
-          <label htmlFor="name" className={classes.label}>
-            Name
-          </label>
-          <input
-            type="name"
-            name="name"
-            id="name"
-            ref={name}
-            autoComplete="off"
-            className={classes.input}
-          />
-        </div>
-        <div className={classes.inputDiv}>
-          <label htmlFor="email" className={classes.label}>
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            ref={email}
-            autoComplete="off"
-            className={classes.input}
-          />
-        </div>
-        <div className={classes.inputDiv}>
-          <label htmlFor="password" className={classes.label}>
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            autoComplete="off"
-            onChange={handlePasswordChange}
-            className={classes.input}
-          />
-          {!passwordIsValid && (
-            <p className={classes.error}>
-              Password should be atleast 6 characters
-            </p>
-          )}
-        </div>
-        <div className={classes.inputDiv}>
-          <label htmlFor="confirm-password" className={classes.label}>
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            name="confirm-password"
-            id="confirm-password"
-            autoComplete="off"
-            onChange={handleConfirmPasswordChange}
-            className={classes.input}
-          />
-          {!passwordMatch && (
-            <p className={classes.error}>Passwords do not match</p>
-          )}
-        </div>
-        <button disabled={!passwordMatch} className={classes.loginButton}>
-          Register
-        </button>
-      </form>
+      <Formik
+        initialValues={initialValue}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form className={classes.main}>
+            <h3>Create Account...</h3>
+            <div className={classes.inputDiv}>
+              <label htmlFor="username" className={classes.label}>
+                Username
+              </label>
+              <Field
+                type="username"
+                name="username"
+                id="username"
+                autoComplete="off"
+                className={classes.input}
+              />
+              <ErrorMessage
+                component="p"
+                name="username"
+                className={classes.error}
+              />
+            </div>
+            <div className={classes.inputDiv}>
+              <label htmlFor="name" className={classes.label}>
+                Name
+              </label>
+              <Field
+                type="name"
+                name="name"
+                id="name"
+                autoComplete="off"
+                className={classes.input}
+              />
+              <ErrorMessage
+                component="p"
+                name="name"
+                className={classes.error}
+              />
+            </div>
+            <div className={classes.inputDiv}>
+              <label htmlFor="email" className={classes.label}>
+                Email
+              </label>
+              <Field
+                type="email"
+                name="email"
+                id="email"
+                autoComplete="off"
+                className={classes.input}
+              />
+              <ErrorMessage
+                component="p"
+                name="email"
+                className={classes.error}
+              />
+            </div>
+            <div className={classes.inputDiv}>
+              <label htmlFor="password" className={classes.label}>
+                Password
+              </label>
+              <Field
+                type="password"
+                name="password"
+                id="password"
+                autoComplete="off"
+                className={classes.input}
+              />
+              <ErrorMessage
+                component="p"
+                name="password"
+                className={classes.error}
+              />
+            </div>
+            <div className={classes.inputDiv}>
+              <label htmlFor="confirmPassword" className={classes.label}>
+                Confirm Password
+              </label>
+              <Field
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                autoComplete="off"
+                className={classes.input}
+              />
+              <ErrorMessage
+                component="p"
+                name="confirmPassword"
+                className={classes.error}
+              />
+            </div>
+            {/* <BeatLoader size={10} color="black" loading /> */}
+            {isSubmitting ? (
+              <img src={loader} alt="" height="50" width="50" />
+            ) : (
+              <button className={classes.loginButton}>Register</button>
+            )}
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
