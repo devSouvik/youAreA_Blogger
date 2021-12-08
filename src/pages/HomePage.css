@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  /* background-color: white; */
   color: black;
   font-family: "Ubuntu", sans-serif;
 }
@@ -7,9 +7,11 @@ body {
 .blog-list {
   margin-top: 50px;
 }
+
 .userListHeading {
   margin-left: 2.5rem;
 }
+
 .userList {
   margin-left: 2rem;
   padding-top: 3%;

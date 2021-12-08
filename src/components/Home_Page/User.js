@@ -1,6 +1,6 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 import { useState } from "react";
 import user from "../../assets/images/user.jpg";
 import tick from "../../assets/images/tick.png";
@@ -16,7 +16,7 @@ function User({ name, bio }) {
 
   return (
     <div>
-      <Container>
+      {/* <Container>
         <Row xs="auto">
           <Col>
             <img className="userImage" src={user} alt="" />
@@ -28,7 +28,7 @@ function User({ name, bio }) {
             <img onClick={clickHandle} src={icon} />
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </div>
   );
 }

@@ -2,10 +2,10 @@ import DefaultNavbar from "../components/common/DefaultNavbar";
 import BlogCard from "../components/Home_Page/BlogCard";
 import Genres from "../components/Home_Page/Genres";
 import User from "../components/Home_Page/User";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./HomePage.css";
 
 const dumyList = [
@@ -81,7 +81,7 @@ const dummyUserList = [
 function HomePage() {
   return (
     <>
-      <DefaultNavbar />
+      {/* <DefaultNavbar />
 
       <div className="blog-list">
         <Container classaName="py-5">
@@ -115,7 +115,7 @@ function HomePage() {
             </Col>
           </Row>
         </Container>
-      </div>
+      </div> */}
     </>
   );
 }

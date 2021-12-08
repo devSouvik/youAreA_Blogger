@@ -61,6 +61,8 @@
 
 .loginButton:disabled {
     cursor: not-allowed;
+    background-color: rgb(106, 175, 231);
+
 }
 
 .loginButton:hover {
