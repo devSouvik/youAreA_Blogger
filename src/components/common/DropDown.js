@@ -1,15 +1,14 @@
 import { useState } from "react";
 import classes from "./DropDown.module.css";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const DropDown = () => {
-  
-  const [isVisible, setIsVisible] = useState(false)
-  
+  const [isVisible, setIsVisible] = useState(false);
+
   const toggleDropDown = () => {
-    setIsVisible(!isVisible)
-  }
+    setIsVisible(!isVisible);
+  };
 
   let dropdownclasses = `${classes.dropdown}`;
 
@@ -26,17 +25,43 @@ const DropDown = () => {
         className={classes.icon}
         onClick={toggleDropDown}
       />
-      {isVisible && <div className={dropdownclasses}>
-        <h3>Anushree Das<p><span>@anushreedas548</span></p></h3>
-        <ul>
-          <li><i className={`fa-solid ${classes.allicon} fa-pen-to-square`}/>
-            <a href="#">Write a story</a></li>
-          <li><i class={`fa-solid ${classes.allicon} fa-book`}></i><a href="#">Stories</a></li>
-          <li><i class={`fa-solid ${classes.allicon} fa-user`}></i><a href="#">My profile</a></li>
-          <li><i class={`fa-solid ${classes.allicon} fa-gear`}></i><a href="#">Settings</a></li>
-          <li><i class={`fa-solid ${classes.allicon} fa-right-from-bracket`}></i><a href="#">Log Out</a></li>
-        </ul>
-      </div>}
+      {isVisible && (
+        <div className={dropdownclasses}>
+          <h3>
+            Anushree Das
+            <p>
+              <span>@anushreedas548</span>
+            </p>
+          </h3>
+          <ul>
+            <li>
+              <Link to="/blog-write">
+                {" "}
+                <i className={`fa-solid ${classes.allicon} fa-pen-to-square`} />
+                <span>Write a story</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/profile-page">
+                <i class={`fa-solid ${classes.allicon} fa-user`}></i>
+                <span>My profile</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/settings">
+                <i class={`fa-solid ${classes.allicon} fa-gear`}></i>
+                <span>Settings</span>
+              </Link>
+            </li>
+            <li>
+              <i
+                class={`fa-solid ${classes.allicon} fa-right-from-bracket`}
+              ></i>
+              <a href="#">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

@@ -16,7 +16,7 @@ import { auth } from "./firebase";
 import User from "./components/Home_Page/User";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
   useEffect(() => {
     const subscription = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -25,10 +25,14 @@ function App() {
         setIsAuthenticated(false);
       }
     });
+
     return () => {
       subscription();
     };
   }, []);
+  if (isAuthenticated === null) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <Router>
       <Routes>
