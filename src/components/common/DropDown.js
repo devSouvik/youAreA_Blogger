@@ -1,7 +1,9 @@
 import { useState } from "react";
-import classes from "./DropDown.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+
+import classes from "./DropDown.module.css";
+import { auth } from "../../firebase";
 
 const DropDown = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -12,11 +14,14 @@ const DropDown = () => {
 
   let dropdownclasses = `${classes.dropdown}`;
 
-  // if(!isVisible){
-  //   dropdownclasses = `${dropdownclasses} ${classes.hide}`
-  // }
+  const logoutHandler = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      alert("Something went wrong");
+    }
+  };
 
-  console.log(dropdownclasses);
   return (
     <div className={classes.main}>
       <img
@@ -43,21 +48,23 @@ const DropDown = () => {
             </li>
             <li>
               <Link to="/profile-page">
-                <i class={`fa-solid ${classes.allicon} fa-user`}></i>
+                <i className={`fa-solid ${classes.allicon} fa-user`}></i>
                 <span>My profile</span>
               </Link>
             </li>
             <li>
               <Link to="/settings">
-                <i class={`fa-solid ${classes.allicon} fa-gear`}></i>
+                <i className={`fa-solid ${classes.allicon} fa-gear`}></i>
                 <span>Settings</span>
               </Link>
             </li>
             <li>
               <i
-                class={`fa-solid ${classes.allicon} fa-right-from-bracket`}
+                className={`fa-solid ${classes.allicon} fa-right-from-bracket`}
               ></i>
-              <a href="#">Log Out</a>
+              <span onClick={logoutHandler} className={classes.logout}>
+                Log Out
+              </span>
             </li>
           </ul>
         </div>

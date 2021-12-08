@@ -59,7 +59,7 @@ a {
   /* text-align: center; */
 }
 
-.dropdown ul li a {
+.dropdown ul li {
   list-style: none;
   padding: 10px 5px;
   border-top: 1px solid rgba(0, 0, 0, 0.09);
@@ -82,5 +82,9 @@ a {
 
 .allicon:hover {
   color: cadetblue;
+  cursor: pointer;
+}
+
+.logout {
   cursor: pointer;
 }
