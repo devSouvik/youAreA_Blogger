@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import User from "./components/Home_Page/User";
+import Loader from "./components/common/Loader";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -32,7 +33,7 @@ function App() {
     };
   }, []);
   if (isAuthenticated === null) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
   return (
     <Router>
