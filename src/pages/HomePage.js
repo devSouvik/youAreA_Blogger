@@ -2,61 +2,62 @@ import DefaultNavbar from "../components/common/DefaultNavbar";
 import BlogCard from "../components/Home_Page/BlogCard";
 import Genres from "../components/Home_Page/Genres";
 import User from "../components/Home_Page/User";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import "./HomePage.css";
+// mui imports
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import { Container, Typography } from "@mui/material";
 
-const dumyList = [
+const dummyList = [
   {
     id: 1,
-    title: "first blog",
-    author: "souvik guria",
-    desc: "this is our first blog",
+    title: "First Blog",
+    author: "Souvik Guria",
+    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
     flare: "technology",
   },
   {
     id: 2,
-    title: "second blog",
+    title: "Second blog",
     author: "Ram ",
-    desc: "this is our second blog",
+    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
     flare: "history",
   },
   {
     id: 3,
-    title: "third blog",
-    author: "shyam",
-    desc: "this is our third blog",
+    title: "Third blog",
+    author: "Shyam",
+    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
     flare: "Culture",
   },
   {
     id: 4,
-    title: "third blog",
-    author: "shyam",
-    desc: "this is our third blog",
-    flare: "Culture",
+    title: "Forth blog",
+    author: "Raju",
+    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
+    flare: "money",
   },
   {
     id: 5,
-    title: "third blog",
-    author: "shyam",
-    desc: "this is our third blog",
-    flare: "Culture",
+    title: "Fifth blog",
+    author: "Babu Bhaiya",
+    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
+    flare: "literature",
   },
   {
     id: 6,
     title: "third blog",
     author: "shyam",
-    desc: "this is our third blog",
-    flare: "Culture",
+    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
+    flare: "society",
   },
   {
     id: 7,
     title: "third blog",
     author: "shyam",
-    desc: "this is our third blog",
-    flare: "Culture",
+    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
+    flare: "education",
   },
 ];
 
@@ -68,12 +69,12 @@ const dummyUserList = [
   },
   {
     id: 2,
-    name: "FirstName LastName",
+    name: "Sneha Bhardwaj",
     bio: "hey, am a software engineer",
   },
   {
     id: 3,
-    name: "Sneha Bhardwaj",
+    name: "FirstName LastName",
     bio: "hey, am a software engineer",
   },
 ];
@@ -81,41 +82,47 @@ const dummyUserList = [
 function HomePage() {
   return (
     <>
-      {/* <DefaultNavbar />
-
-      <div className="blog-list">
-        <Container classaName="py-5">
-          <Row>
-            <Col xs={12} md={12} lg={8}>
-              {dumyList.map((blog) => {
+      <DefaultNavbar />
+      <Container sx={{ marginTop: 5, mb: 5, marginX: 2 }} maxWidth="xl">
+        <Box>
+          <Grid container spacing={2}>
+            <Grid item lg={8} md={"auto"} sm={8} xs={6}>
+              {dummyList.map((listItem) => {
                 return (
-                  <BlogCard
-                    key={blog.id}
-                    title={blog.title}
-                    author={blog.author}
-                    desc={blog.desc}
-                  />
+                  <Grid sx={{ mb: 3 }} key={listItem.id}>
+                    <BlogCard
+                      title={listItem.title}
+                      author={listItem.author}
+                      desc={listItem.desc}
+                      flare={listItem.flare}
+                    />
+                  </Grid>
                 );
               })}
-            </Col>
-            <Col xs={6} md={4} lg={4}>
-              <div class="sticky-md-top">
-                <Genres />
-                <p className="userListHeading">
-                  <strong> Whom To Follow - </strong>
-                </p>
-                {dummyUserList.map((user) => {
-                  return (
-                    <div className="userList">
-                      <User key={user.id} name={user.name} bio={user.bio} />
-                    </div>
-                  );
-                })}
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div> */}
+            </Grid>
+
+            <Grid item lg={4} md={"auto"} sm={4} xs={4}>
+              <Genres />
+              <Container>
+                <Typography
+                  sx={{ marginTop: 5, fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h6"
+                >
+                  Recomended Users
+                </Typography>
+              </Container>
+              {/* recomended users  */}
+              {dummyUserList.map((user) => {
+                return <User name={user.name} bio={user.bio} />;
+              })}
+              {/* ends */}
+            </Grid>
+            {/* end of 2nd col */}
+          </Grid>
+          {/* end of grid-container  */}
+        </Box>
+      </Container>
     </>
   );
 }

@@ -1,22 +1,25 @@
 import "./Genres.css";
-// import Container from "react-bootstrap/Container";
-// import "bootstrap/dist/css/bootstrap.min.css";
+// mui imports
+import { Container, Typography } from "@mui/material";
 
 function Genres() {
   return (
-    <div>
-      {/* <Container>
-        <div class="py-5 px-3">
-          <h6>
-            <strong> Recomended genres</strong>
-          </h6>
-          <button class="button">Technology</button>
-          <button class="button">Money</button>
-          <button class="button">Health</button>
-          <button class="button">education</button>
-        </div>
-      </Container> */}
-    </div>
+    <>
+      <Container>
+        <Typography sx={{ mb: 3, fontWeight: "bold" }} variant="h6">
+          Recomended Genres
+        </Typography>
+
+        <button class="button">Technology</button>
+        <button class="button">Money</button>
+        <button class="button">Health</button>
+        <button class="button">education</button>
+        <button class="button">Society</button>
+        <button class="button">Literature</button>
+        <button class="button">Culture</button>
+        <button class="button">History</button>
+      </Container>
+    </>
   );
 }
 
