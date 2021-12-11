@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
+import classes from "./App.css";
 import FrontPage from "./pages/FrontPage";
 import ProfilePage from "./pages/ProfilePage";
 import Blog_writing from "./pages/Blog_writing";
@@ -15,6 +15,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import User from "./components/Home_Page/User";
 import Loader from "./components/common/Loader";
+import Error from "./components/common/Error";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -93,7 +94,7 @@ function App() {
             </Auth>
           }
         />
-        <Route path="*" element={<h1>Page not found</h1>} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );
