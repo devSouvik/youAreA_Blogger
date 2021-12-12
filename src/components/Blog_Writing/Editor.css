@@ -1,5 +1,5 @@
 .articleHeading {
-  padding-top: 3%;
+  /* padding-top: 3%; */
   /* margin-top: 80px; */
   font-size: 30px;
   font-family: "Ubuntu", sans-serif;
@@ -11,4 +11,17 @@
   font-size: 30px;
   font-family: "Ubuntu", sans-serif;
   margin-bottom: 20px;
+}
+
+.container {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.btn {
+  color: whitesmoke;
+  background-color: rgb(37, 37, 37);
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
 }
