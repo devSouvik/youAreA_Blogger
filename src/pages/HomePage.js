@@ -109,7 +109,7 @@ function HomePage() {
                   gutterBottom
                   variant="h6"
                 >
-                  Recomended Users
+                  recommended Users
                 </Typography>
               </Container>
               {/* recomended users  */}
