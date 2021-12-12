@@ -6,112 +6,90 @@ import Security from "./Security";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Reset_pass from "./Reset_pass";
-// import Col from "react-bootstrap/Col";
-// import Row from "react-bootstrap/Row";
-// import Container from "react-bootstrap/Container";
-// import Stack from "react-bootstrap/Stack";
+// mui imports
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+  fontWeight: "bold",
+}));
 
 toast.configure();
 export default function Settings_col() {
   const [view, setView] = useState(<Form />);
 
-  const notify = () => {
-    toast.success("Email sent, please check your inbox!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
+  // const notify = () => {
+  //   toast.success("Email sent, please check your inbox!", {
+  //     position: "bottom-center",
+  //     autoClose: 5000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //   });
+  // };
 
   return (
-    <>
-      {/* <div class="container">
-        <div class="row">
-          left
-
-          <div class="listClass">
-            <Col>
-              <div class="element editUser" onClick={() => setView(<Form />)}>
-                Edit Profile
-              </div>
-              <hr />
-              <div class=" element">
+    <div className="container">
+      <Container maxWidth="xl">
+        <Grid container spacing={2}>
+          {/* === left col === */}
+          <Grid sx={{ marginTop: 8 }} item xs={12} md={12} lg={4}>
+            <Stack spacing={2}>
+              <Item sx={{ textAlign: "left" }}>
                 <div
-                  className="resetPassword"
+                  className="itemClass"
+                  onClick={() => {
+                    setView(<Form />);
+                  }}
+                >
+                  Edit Profile
+                </div>
+                <hr />
+                <div
+                  className="itemClass"
                   onClick={() => {
                     setView(<Reset_pass />);
                   }}
                 >
-                  Reset Password
+                  Change Password
                 </div>
-              </div>
-              <hr />
-              <div class="element">
+                <hr />
                 <div
-                  className="security"
+                  className="itemClass"
                   onClick={() => {
                     setView(<Security />);
                   }}
                 >
                   Security
                 </div>
-              </div>
-            </Col>
-          </div>
-          right
-
-
-          <div class="col-8">
-            <div className="right_col">
-              <div className="user">
-                <img src={user} alt="Avatar" class="avatar" />
-                <h3 className="username">souvikguria</h3>
-              </div>
-              {view}
+              </Item>
+            </Stack>
+          </Grid>
+          {/* === Right col === */}
+          <Grid item xs={12} md={12} lg={8}>
+            <div style={{ marginBottom: "1.5rem" }}>
+              <Stack direction="row" spacing={2}>
+                <Avatar alt="Remy Sharp" src={user} />
+                <Typography variant="h4" sx={{ textAlign: "left" }}>
+                  SouvikGuria
+                </Typography>
+              </Stack>
             </div>
-          </div>
-        </div>
-      </div> */}
-      {/* <Container>
-        <Row>
-          <Col md={4} className="left-col">
-            <Stack gap={5} className="element">
-              <div className="editUser" onClick={() => setView(<Form />)}>
-                Edit Profile
-              </div>
-              <div
-                className="resetPassword"
-                onClick={() => {
-                  setView(<Reset_pass />);
-                }}
-              >
-                Reset Password
-              </div>
-              <div
-                className="security"
-                onClick={() => {
-                  setView(<Security />);
-                }}
-              >
-                Security
-              </div>
-            </Stack>
-          </Col>
-          <Col md={8} className="right-col">
-            <Stack>
-              <div className="user">
-                <img src={user} alt="Avatar" class="avatar" />
-                <h3 className="username">souvikguria</h3>
-              </div>
-              <div>{view}</div>
-            </Stack>
-          </Col>
-        </Row>
-      </Container> */}
-    </>
+            <Item>{view}</Item>
+          </Grid>
+        </Grid>
+      </Container>
+    </div>
   );
 }

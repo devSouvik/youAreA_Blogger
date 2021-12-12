@@ -1,6 +1,6 @@
 import DefaultNavbar from "../components/common/DefaultNavbar";
 import Settings_col from "../components/Settings_Page/Settings_col";
-import "./Settings.css";
+// import "./Settings.css";
 
 export default function Settings() {
   return (
