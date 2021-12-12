@@ -1,45 +1,91 @@
-import "./Reset_pass.css";
+// import "./Reset_pass.css";
+// mui imports
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { makeStyles, StylesProvider } from "@mui/styles";
+import { useState } from "react";
+
+const useStyles = makeStyles({
+  helperText: {
+    fontWeight: "bold",
+  },
+  labelText: {
+    color: "black",
+    fontWeight: "bold",
+  },
+});
 
 export default function Reset_pass() {
+  const classes = useStyles();
+
+  const [password, setPassword] = useState("");
+  const [newPass, setNewPass] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+
   return (
-    <div>
-      <form className="reset_pass">
-        <div class="form-group">
-          <label htmlFor="InputOldPassword">Old Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="InputOldPassword"
-            aria-describedby="emailHelp"
-            placeholder="enter your old password"
-          />
-        </div>
+    <>
+      <TextField
+        FormHelperTextProps={{
+          className: classes.helperText,
+        }}
+        InputLabelProps={{
+          className: classes.labelText,
+        }}
+        onChange={(e) => {
+          setNewPass(e.target.value);
+          console.log();
+        }}
+        sx={{ fontWeight: "bold" }}
+        helperText="Please enter your Old Password"
+        fullWidth
+        id="outlined-basic"
+        margin="normal"
+        label="Old Password"
+        variant="outlined"
+      />
+      <TextField
+        FormHelperTextProps={{
+          className: classes.helperText,
+        }}
+        InputLabelProps={{
+          className: classes.labelText,
+        }}
+        onChange={(e) => {
+          setNewPass(e.target.value);
+          console.log();
+        }}
+        sx={{ fontWeight: "bold" }}
+        helperText="Please enter your New Password"
+        fullWidth
+        id="outlined-basic"
+        margin="normal"
+        label="New Password"
+        variant="outlined"
+      />
 
-        <div class="form-group">
-          <label htmlFor="InputNewPassword">New Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="InputNewPassword"
-            aria-describedby="emailHelp"
-            placeholder="enter new password"
-          />
-        </div>
+      <TextField
+        FormHelperTextProps={{
+          className: classes.helperText,
+        }}
+        InputLabelProps={{
+          className: classes.labelText,
+        }}
+        onChange={(e) => {
+          setConfirmPass(e.target.value);
+          console.log();
+        }}
+        sx={{ fontWeight: "bold" }}
+        helperText="Please Confirm your New Password"
+        fullWidth
+        id="outlined-basic"
+        margin="normal"
+        label="Confirm Password"
+        variant="outlined"
+      />
 
-        <div class="form-group">
-          <label htmlFor="InputConfirmNewPassword">Confirm New Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="InputConfirmNewPassword"
-            aria-describedby="emailHelp"
-            placeholder="confirm your new password"
-          />
-        </div>
-        <button type="submit" class="reset_pass_btn btn btn-dark">
-          Change Password
-        </button>
-      </form>
-    </div>
+      <Button sx={{ fontWeight: "bold" }} variant="contained">
+        Submit
+      </Button>
+    </>
   );
 }

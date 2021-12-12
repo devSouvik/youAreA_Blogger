@@ -1,87 +1,132 @@
-import "./Form.css";
+// import "./Form.css";
 import { useState } from "react";
+// MUI imports
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import UpgradeIcon from "@mui/icons-material/Upgrade";
+import { makeStyles, StylesProvider } from "@mui/styles";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Box from "@mui/material/Box";
+import FormHelperText from "@mui/material/FormHelperText";
+
+const useStyles = makeStyles({
+  helperText: {
+    fontWeight: "bold",
+    fontSize: 15,
+  },
+  labelText: {
+    color: "black",
+    fontWeight: "bold",
+  },
+});
 
 export default function Form() {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [gender, setGender] = useState("");
 
-  const handleClick = () => {
-    console.log(name, bio, phoneNumber);
+  // const handleClick = () => {
+  //   console.log(name, bio, phoneNumber);
+  // };
+
+  const handleChange = (e) => {
+    setGender(e.target.value);
+    console.log(gender);
   };
 
+  const classes = useStyles();
   return (
-    <div>
-      <div className="container py-4 px-5 ">
-        <form>
-          <div className="form-group row py-2">
-            <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
-              Name
-            </label>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                id="inputText"
-                placeholder="name"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-            </div>
-          </div>
+    <>
+      <TextField
+        FormHelperTextProps={{
+          className: classes.helperText,
+        }}
+        InputLabelProps={{
+          className: classes.labelText,
+        }}
+        onChange={(e) => {
+          setName(e.target.value);
+          console.log(name);
+        }}
+        sx={{ fontWeight: "bold" }}
+        helperText="Please enter your name"
+        fullWidth
+        id="outlined-basic"
+        margin="normal"
+        label="Name"
+        variant="outlined"
+      />
+      <TextField
+        FormHelperTextProps={{
+          className: classes.helperText,
+        }}
+        InputLabelProps={{
+          className: classes.labelText,
+        }}
+        onChange={(e) => {
+          setPhoneNumber(e.target.value);
+          console.log(phoneNumber);
+        }}
+        sx={{ fontWeight: "bold" }}
+        helperText="Please enter your Phone Number"
+        fullWidth
+        margin="normal"
+        id="outlined-basic"
+        label="Phone"
+        variant="outlined"
+      />
+      <TextField
+        FormHelperTextProps={{
+          className: classes.helperText,
+        }}
+        InputLabelProps={{
+          className: classes.labelText,
+        }}
+        onChange={(e) => {
+          setBio(e.target.value);
+          console.log(bio);
+        }}
+        multiline
+        rows={4}
+        helperText="Please enter your bio"
+        fullWidth
+        margin="normal"
+        id="outlined-basic"
+        label="Bio"
+        variant="outlined"
+      />
 
-          <div className="form-group row py-2">
-            <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
-              Phone
-            </label>
-            <div className="col-sm-10">
-              <input
-                type="number"
-                className="form-control"
-                id="inputPhone"
-                placeholder="phone Number"
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value);
-                }}
-              />
-            </div>
-          </div>
+      <Box sx={{ minWidth: 120, marginBottom: 5 }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            helperText="Please select your Gender"
+            value={gender}
+            label="Gender"
+            onChange={handleChange}
+          >
+            <MenuItem value={"male"}>Male</MenuItem>
+            <MenuItem value={"female"}>Female</MenuItem>
+          </Select>
+          <FormHelperText sx={{ fontWeight: "bold", fontSize: 15 }}>
+            Please Select Your Gender
+          </FormHelperText>
+        </FormControl>
+      </Box>
 
-          <div className="form-group row py-2">
-            <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
-              Bio
-            </label>
-            <div className="col-sm-10">
-              <textarea
-                className="form-control"
-                id="bioTextArea"
-                rows="5"
-                placeholder="write your bio here"
-                onChange={(e) => {
-                  setBio(e.target.value);
-                }}
-              ></textarea>
-            </div>
-          </div>
-
-          <select className=" genderSelection custom-select py-2">
-            <option selected>Select Gender</option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-          </select>
-
-          <div className="py-2">
-            <button
-              type="submit"
-              className="btn btn-outline-dark float-right py-2 "
-              onClick={handleClick}
-            >
-              Update
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+      <Button
+        sx={{ fontWeight: "bold" }}
+        variant="contained"
+        endIcon={<UpgradeIcon />}
+      >
+        Submit
+      </Button>
+    </>
   );
 }
