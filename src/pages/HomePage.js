@@ -86,7 +86,7 @@ function HomePage() {
       <Container sx={{ marginTop: 5, mb: 5, marginX: 2 }} maxWidth="xl">
         <Box>
           <Grid container spacing={2}>
-            <Grid item lg={8} md={"auto"} sm={8} xs={6}>
+            <Grid item lg={8} md={8} sm={12} xs={12}>
               {dummyList.map((listItem) => {
                 return (
                   <Grid sx={{ mb: 3 }} key={listItem.id}>
@@ -101,7 +101,7 @@ function HomePage() {
               })}
             </Grid>
 
-            <Grid item lg={4} md={"auto"} sm={4} xs={4}>
+            <Grid item lg={4} md={"auto"} sm={12} xs={12}>
               <Genres />
               <Container>
                 <Typography
