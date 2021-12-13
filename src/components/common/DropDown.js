@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 import classes from "./DropDown.module.css";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 
 const DropDown = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    async function getUserDetails() {
+      const docRef = doc(db, "users", auth.currentUser.uid);
+      const docSnapshot = await getDoc(docRef);
+      setUser(docSnapshot.data());
+    }
+
+    getUserDetails();
+  }, []);
 
   const toggleDropDown = () => {
     setIsVisible(!isVisible);
@@ -25,7 +37,11 @@ const DropDown = () => {
   return (
     <div className={classes.main}>
       <img
-        src="https://img.icons8.com/small/32/000000/user-male-circle.png"
+        src={
+          user && user.profile_picture
+            ? user.profile_picture
+            : "https://img.icons8.com/small/32/000000/user-male-circle.png"
+        }
         alt=""
         className={classes.icon}
         onClick={toggleDropDown}
@@ -33,9 +49,9 @@ const DropDown = () => {
       {isVisible && (
         <div className={dropdownclasses}>
           <h3>
-            Anushree Das
+            {user && user.name}
             <p>
-              <span>@anushreedas548</span>
+              <span>{user && user.email}</span>
             </p>
           </h3>
           <ul>

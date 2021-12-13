@@ -34,19 +34,22 @@ const validationSchema = Yup.object({
 const RegistrationPageCard = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
+    console.log(1);
     try {
+      console.log(2);
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         values.email,
         values.password
       );
+      console.log(3);
       if (userCredential && userCredential.user.uid) {
-        const docRef = await setDoc(doc(db, "users", userCredential.user.uid), {
+         await setDoc(doc(db, "users", userCredential.user.uid), {
           username: values.username,
           name: values.name,
           email: values.email,
         });
-        console.log(docRef);
+        console.log(4);
       }
       // Signed in
       const user = userCredential.user;
