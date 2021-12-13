@@ -20,7 +20,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   useEffect(() => {
     const subscription = onAuthStateChanged(auth, (user) => {
-      console.log(user);
       if (user) {
         setIsAuthenticated(true);
       } else {
