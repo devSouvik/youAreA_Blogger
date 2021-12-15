@@ -15,15 +15,18 @@
   /* width: 150px; */
   height: 48px;
 }
+
 .rightContainer {
   display: flex;
   align-items: center;
 }
+
 .searchform {
   position: relative;
   display: flex;
   align-items: center;
 }
+
 .search {
   padding: 9px 10px 9px 32px;
   transition: all 0.05s;
@@ -32,13 +35,16 @@
   cursor: pointer;
   border: none;
   background: transparent;
+  position: relative;
 }
+
 .searchicon {
   left: 10px;
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   /* background-color: aqua; */
 }
+
 .search:focus,
 .active {
   width: 13em;
@@ -47,6 +53,7 @@
   border: 1px solid rgb(199, 196, 196);
   padding-left: 40px;
 }
+
 .startButton {
   padding: 7px 15px;
   margin: 0 15px;
@@ -58,6 +65,7 @@
   font-size: 15px;
   font-weight: 500;
 }
+
 .startButton:hover {
   background-color: #d8cbcb;
 }

@@ -28,6 +28,7 @@ const DefaultNavbar = () => {
           <img
             src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"
             className={classes.searchicon}
+            alt="search-icon"
           />
           <input
             type="text"
