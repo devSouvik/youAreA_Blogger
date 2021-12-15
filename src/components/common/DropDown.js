@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
 import classes from "./DropDown.module.css";
 import { auth, db } from "../../firebase";
+
+const domNode = document.getElementById("root");
 
 const DropDown = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,8 +26,6 @@ const DropDown = () => {
   const toggleDropDown = () => {
     setIsVisible(!isVisible);
   };
-
-  let dropdownclasses = `${classes.dropdown}`;
 
   const logoutHandler = async () => {
     try {
@@ -46,47 +47,54 @@ const DropDown = () => {
         className={classes.icon}
         onClick={toggleDropDown}
       />
-      {isVisible && (
-        <div className={dropdownclasses}>
-          <h3>
-            {user && user.name}
-            <p>
-              <span>{user && user.email}</span>
-            </p>
-          </h3>
-          <ul>
-            <li>
-              <Link to="/blog-write">
-                {" "}
-                <i className={`fa-solid ${classes.allicon} fa-pen-to-square`} />
-                <span>Write a story</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/profile-page">
-                <i className={`fa-solid ${classes.allicon} fa-user`}></i>
-                <span>My profile</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/settings">
-                <i className={`fa-solid ${classes.allicon} fa-gear`}></i>
-                <span>Settings</span>
-              </Link>
-            </li>
-            <li>
-              <i
-                className={`fa-solid ${classes.allicon} fa-right-from-bracket`}
-              ></i>
-              <span onClick={logoutHandler} className={classes.logout}>
-                Log Out
-              </span>
-            </li>
-          </ul>
-        </div>
-      )}
+      <DropDownModal
+        isVisible={isVisible}
+        user={user}
+        logoutHandler={logoutHandler}
+      />
     </div>
   );
 };
 
 export default DropDown;
+
+const DropDownModal = ({ isVisible, user, logoutHandler }) => {
+  if (!isVisible) return null;
+  return createPortal(
+    <div className={classes.dropdown}>
+      <h3>{user && user.name}</h3>
+      <p>{user && user.email}</p>
+
+      <ul>
+        <li>
+          <Link to="/blog-write">
+            {" "}
+            <i className={`fa-solid ${classes.allicon} fa-pen-to-square`} />
+            <span>Write a story</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/profile-page">
+            <i className={`fa-solid ${classes.allicon} fa-user`}></i>
+            <span>My profile</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/settings">
+            <i className={`fa-solid ${classes.allicon} fa-gear`}></i>
+            <span>Settings</span>
+          </Link>
+        </li>
+        <li>
+          <i
+            className={`fa-solid ${classes.allicon} fa-right-from-bracket`}
+          ></i>
+          <span onClick={logoutHandler} className={classes.logout}>
+            Log Out
+          </span>
+        </li>
+      </ul>
+    </div>,
+    domNode
+  );
+};
