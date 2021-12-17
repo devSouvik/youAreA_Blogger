@@ -1,6 +1,6 @@
 import classes from "./ProfilePageCard.module.css";
-import person from "../../assets/images/person.jpg";
-import { text } from "@fortawesome/fontawesome-svg-core";
+// import person from "../../assets/images/person.jpg";
+// import { text } from "@fortawesome/fontawesome-svg-core";
 
 const ProfilePageCard = (props) => {
   return (

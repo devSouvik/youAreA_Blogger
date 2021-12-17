@@ -5,7 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { makeStyles, StylesProvider } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   flareBtn: {

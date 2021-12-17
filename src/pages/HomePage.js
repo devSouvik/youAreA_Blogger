@@ -4,9 +4,9 @@ import Genres from "../components/Home_Page/Genres";
 import User from "../components/Home_Page/User";
 // mui imports
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
+// import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import { Container, Typography } from "@mui/material";
 
 const dummyList = [

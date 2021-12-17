@@ -2,7 +2,7 @@
 // mui imports
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { makeStyles, StylesProvider } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 import { useState } from "react";
 
 const useStyles = makeStyles({

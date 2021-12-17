@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import classes from "./App.css";
+// import classes from "./App.css";
 import FrontPage from "./pages/FrontPage";
 import ProfilePage from "./pages/ProfilePage";
 import Blog_writing from "./pages/Blog_writing";
@@ -13,7 +13,7 @@ import Auth from "./components/common/Auth";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
-import User from "./components/Home_Page/User";
+// import User from "./components/Home_Page/User";
 import Loader from "./components/common/Loader";
 import Error from "./components/common/Error";
 

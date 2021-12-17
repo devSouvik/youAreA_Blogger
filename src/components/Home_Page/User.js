@@ -5,9 +5,9 @@ import follow_user from "../../assets/images/follow_user.png";
 import "./User.css";
 // mui imports
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
+// import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 
 function User({ name, bio }) {
@@ -17,12 +17,12 @@ function User({ name, bio }) {
     seticon(tick);
   };
 
-  const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body1,
-    padding: theme.spacing(1),
-    // textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
+  // const Item = styled(Paper)(({ theme }) => ({
+  //   ...theme.typography.body1,
+  //   padding: theme.spacing(1),
+  //   // textAlign: "center",
+  //   color: theme.palette.text.secondary,
+  // }));
 
   return (
     <>

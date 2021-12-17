@@ -6,7 +6,7 @@ import parse from "html-react-parser";
 // mui imports
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { makeStyles, StylesProvider } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   helperText: {
@@ -31,7 +31,8 @@ export default function Editor() {
     setArticleData(data);
   };
 
-  const postSubmit = () => {};
+  // use this function for submitting posts
+  // const postSubmit = () => {};
 
   const classes = useStyles();
 
@@ -58,6 +59,7 @@ export default function Editor() {
           }}
           onChange={(e) => {
             setHeading(e.target.value);
+            console.log(heading);
           }}
         />
       </Box>

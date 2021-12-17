@@ -2,7 +2,7 @@
 // mui imports
 import { Container } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { makeStyles, StylesProvider } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   helperText: {

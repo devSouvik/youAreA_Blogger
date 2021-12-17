@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import classes from "./ProfileBody.module.css";
 import ProfileHeader from "./ProfileHeader";
 import ProfilePageCard from "./ProfilePageCard";
