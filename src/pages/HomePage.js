@@ -2,6 +2,10 @@ import DefaultNavbar from "../components/common/DefaultNavbar";
 import BlogCard from "../components/Home_Page/BlogCard";
 import Genres from "../components/Home_Page/Genres";
 import User from "../components/Home_Page/User";
+import user from "../assets/images/user.jpg";
+import user1 from "../assets/images/user1.jpg";
+import user2 from "../assets/images/user2.png";
+
 // mui imports
 import Grid from "@mui/material/Grid";
 // import { styled } from "@mui/material/styles";
@@ -65,17 +69,20 @@ const dummyUserList = [
   {
     id: 1,
     name: "Souvik Guria",
-    bio: "hey, am a software engineer",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    profilePic: user,
   },
   {
     id: 2,
     name: "Sneha Bhardwaj",
-    bio: "hey, am a software engineer",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    profilePic: user2,
   },
   {
     id: 3,
     name: "FirstName LastName",
-    bio: "hey, am a software engineer",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    profilePic: user1,
   },
 ];
 
@@ -83,10 +90,10 @@ function HomePage() {
   return (
     <>
       <DefaultNavbar />
-      <Container sx={{ marginTop: 5, mb: 5, marginX: 2 }} maxWidth="xl">
+      <Container sx={{ marginTop: 5, mb: 5 }} maxWidth="xl">
         <Box>
           <Grid container spacing={2}>
-            <Grid item lg={8} md={8} sm={12} xs={12}>
+            <Grid item lg={7} md={8} sm={12} xs={12}>
               {dummyList.map((listItem) => {
                 return (
                   <Grid sx={{ mb: 3 }} key={listItem.id}>
@@ -101,7 +108,7 @@ function HomePage() {
               })}
             </Grid>
 
-            <Grid item lg={4} md={"auto"} sm={12} xs={12}>
+            <Grid item lg={5} md={4} sm={9} xs={9}>
               <Genres />
               <Container>
                 <Typography
@@ -114,10 +121,17 @@ function HomePage() {
               </Container>
               {/* recomended users  */}
               {dummyUserList.map((user) => {
-                return <User name={user.name} bio={user.bio} />;
+                return (
+                  <User
+                    name={user.name}
+                    bio={user.bio}
+                    profilePic={user.profilePic}
+                  />
+                );
               })}
               {/* ends */}
             </Grid>
+
             {/* end of 2nd col */}
           </Grid>
           {/* end of grid-container  */}

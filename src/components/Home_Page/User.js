@@ -5,12 +5,30 @@ import follow_user from "../../assets/images/follow_user.png";
 import "./User.css";
 // mui imports
 import Grid from "@mui/material/Grid";
-// import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-// import Paper from "@mui/material/Paper";
-import { Typography } from "@mui/material";
+// import ArticleIcon from "@mui/icons-material/Article";
+import SubjectTwoToneIcon from "@mui/icons-material/SubjectTwoTone";
+import {
+  Avatar,
+  Card,
+  Chip,
+  createStyles,
+  Divider,
+  IconButton,
+  makeStyles,
+  Stack,
+  Switch,
+  Typography,
+} from "@mui/material";
+import { grey, red } from "@mui/material/colors";
+import CardHeader from "@mui/material/CardHeader";
+import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
+import HowToRegRoundedIcon from "@mui/icons-material/HowToRegRounded";
+import { fontWeight } from "@mui/system";
 
-function User({ name, bio }) {
+// const useStyle = makeStyles((theme: Theme) => createStyles({}));
+
+function User({ name, bio, profilePic }) {
   const [icon, seticon] = useState(follow_user);
 
   const clickHandle = () => {
@@ -26,7 +44,7 @@ function User({ name, bio }) {
 
   return (
     <>
-      <Box sx={{ marginTop: 5, paddingX: 5 }}>
+      {/* <Box sx={{ marginTop: 5, paddingX: 5 }}>
         <Grid container spacing={3}>
           <Grid item xs>
             <img src={user} className="userImage" alt="user_dp" />
@@ -47,7 +65,35 @@ function User({ name, bio }) {
             <img onClick={clickHandle} src={icon} alt="" />
           </Grid>
         </Grid>
-      </Box>
+      </Box> */}
+
+      <Card sx={{ marginBottom: 5, marginLeft: 4, marginRight: 10 }}>
+        <Box sx={{ p: 2, display: "flex" }}>
+          <Avatar variant="rounded" sx={{ marginTop: 1.25 }} src={profilePic} />
+          <Stack spacing={0.5}>
+            <Typography fontWeight={700} sx={{ marginX: 2 }}>
+              {name}
+            </Typography>
+            <div style={{ display: "flex" }}>
+              <SubjectTwoToneIcon sx={{ color: grey[500], marginLeft: 1.75 }} />
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                // noWrap="true"
+                sx={{ marginLeft: 1, fontWeight: "bold" }}
+              >
+                {bio}
+              </Typography>
+            </div>
+          </Stack>
+          <img
+            style={{ width: 30, height: 32, marginTop: 15, marginLeft: 5 }}
+            src={icon}
+            onClick={clickHandle}
+            alt=""
+          />
+        </Box>
+      </Card>
     </>
   );
 }

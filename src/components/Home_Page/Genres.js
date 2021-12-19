@@ -7,7 +7,7 @@ function Genres() {
     <>
       <Container>
         <Typography sx={{ mb: 3, fontWeight: "bold" }} variant="h6">
-          recommended Genres
+          Recommended Genres
         </Typography>
 
         <button class="button">Technology</button>
