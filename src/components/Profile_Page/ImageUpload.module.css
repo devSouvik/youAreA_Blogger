@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.card {
+    background-color: aliceblue;
+    /* height: 200px; */
+    width: 400px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* .close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+.closeicon {
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid black;
+    height: 21x;
+    width: 21px;
+    text-align: center;
+} */
+
+/* .closeicon:hover {
+    color: rgb(197, 17, 17);
+    border: 1px solid rgb(192, 14, 14);
+} */
+
+.button {
+    padding: 19px 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button:not(:last-of-type) {
+    border-bottom: 1px solid rgb(209, 203, 203);
+}
+
+.button:hover {
+    background-color: rgb(243, 235, 235);
+}
+
+.title {
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(209, 203, 203);
+    width: 100%;
+    text-align: center;
+}
+
+.uploadphoto {
+    color: rgb(15, 105, 223);
+    font-weight: 600;
+}
+
+.removephoto {
+    color: rgb(182, 12, 12);
+}
+
+.file {
+    visibility: none;
+    height: 0;
+    width: 0;
+}

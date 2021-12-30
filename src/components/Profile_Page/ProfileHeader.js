@@ -1,20 +1,29 @@
 import classes from "./ProfileHeader.module.css";
 import image from "../../assets/images/person.jpg";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import ImageUpload from "./ImageUpload";
 
 const ProfileHeader = () => {
   const { user } = useContext(GlobalContext);
+  const [modalVisible, setModalVisible] = useState(false);
+
   const profileImage =
     user.profile_picture && user.profile_picture.length > 0
       ? user.profile_picture
       : image;
+  const showImagePicker = () => {
+    setModalVisible(true);
+  };
+  const hideImagePicker = () => {
+    setModalVisible(false);
+  };
   return (
     <div className={classes.main}>
       <div className={classes.imagediv}>
         <div className={classes.imagecontainer}>
           <img src={profileImage} className={classes.image} alt="" />
-          <div className={classes.imageupload}>
+          <div onClick={showImagePicker} className={classes.imageupload}>
             <i className={`fa-solid fa-camera ${classes.editicon}`}></i>
           </div>
         </div>
@@ -30,6 +39,7 @@ const ProfileHeader = () => {
           <h4 className={classes.bio}>{user.bio}</h4>
         )}
       </div>
+      <ImageUpload open={modalVisible} handleClose={hideImagePicker} />
     </div>
   );
 };
