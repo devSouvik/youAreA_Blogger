@@ -1,27 +1,32 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import classes from "./App.css";
 import FrontPage from "./pages/FrontPage";
 import ProfilePage from "./pages/ProfilePage";
 import Blog_writing from "./pages/Blog_writing";
 import Settings from "./pages/Settings";
 import HomePage from "./pages/HomePage";
-// import "./App.css";
+import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import NoAuth from "./components/common/NoAuth";
 import Auth from "./components/common/Auth";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
 // import User from "./components/Home_Page/User";
 import Loader from "./components/common/Loader";
 import Error from "./components/common/Error";
+import { doc, getDoc } from "firebase/firestore";
+import { GlobalContext } from "./contexts/GlobalContext";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const { updateUser } = useContext(GlobalContext);
   useEffect(() => {
-    const subscription = onAuthStateChanged(auth, (user) => {
+    const subscription = onAuthStateChanged(auth, async (user) => {
       if (user) {
+        const docRef = doc(db, "users", user.uid);
+        const docSnapshot = await getDoc(docRef);
+        updateUser(docSnapshot.data());
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);

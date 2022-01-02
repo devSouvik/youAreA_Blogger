@@ -1,8 +1,9 @@
 import classes from "./DefaultNavbar.module.css";
 import image from "../../assets/images/logos/logo.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import DropDown from "./DropDown";
 import { Link } from "react-router-dom";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 const DefaultNavbar = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -11,6 +12,12 @@ const DefaultNavbar = () => {
   };
   const searchInputChangehandler = (event) => {
     setSearchInput(event.target.value);
+  };
+  const context = useContext(GlobalContext);
+
+  const handleChange = () => {
+    context.updateValue(context.user + 1);
+    console.log("handleChange");
   };
   let searchClasses = classes.search;
 
@@ -29,6 +36,7 @@ const DefaultNavbar = () => {
             src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"
             className={classes.searchicon}
             alt="search-icon"
+            onClick={handleChange}
           />
           <input
             type="text"
@@ -36,6 +44,7 @@ const DefaultNavbar = () => {
             className={searchClasses}
             autoComplete="off"
             onChange={searchInputChangehandler}
+            onClick={handleChange}
           />
         </form>
 

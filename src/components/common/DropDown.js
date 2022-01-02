@@ -1,27 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-
 import classes from "./DropDown.module.css";
-import { auth, db } from "../../firebase";
+import { auth } from "../../firebase";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 const domNode = document.getElementById("root");
 
 const DropDown = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    async function getUserDetails() {
-      const docRef = doc(db, "users", auth.currentUser.uid);
-      const docSnapshot = await getDoc(docRef);
-      setUser(docSnapshot.data());
-    }
-
-    getUserDetails();
-  }, []);
+  const { user } = useContext(GlobalContext);
 
   const toggleDropDown = () => {
     setIsVisible(!isVisible);
@@ -34,7 +23,7 @@ const DropDown = () => {
       alert("Something went wrong");
     }
   };
-
+  console.log("dp");
   return (
     <div className={classes.main}>
       <img
@@ -59,6 +48,7 @@ const DropDown = () => {
 export default DropDown;
 
 const DropDownModal = ({ isVisible, user, logoutHandler }) => {
+  console.log("dm");
   if (!isVisible) return null;
   return createPortal(
     <div className={classes.dropdown}>

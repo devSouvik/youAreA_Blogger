@@ -1,7 +1,9 @@
 // import { useEffect, useState } from "react";
+import { useContext } from "react";
 import classes from "./ProfileBody.module.css";
 import ProfileHeader from "./ProfileHeader";
 import ProfilePageCard from "./ProfilePageCard";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 const blogs = [
   {
@@ -47,6 +49,8 @@ const blogs = [
 ];
 
 const ProfileBody = () => {
+  const value = useContext(GlobalContext);
+  console.log(value);
   // const [loading, setLoading] = useState(false);
   // useEffect(() => {
   //   console.log("useEffect initiated");

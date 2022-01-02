@@ -3,22 +3,61 @@
   justify-content: center;
   width: 40vw;
 }
+
+.imagediv {
+  display: flex;
+  height: 100%;
+  align-items: stretch;
+  margin-right: 25px;
+}
+
+.imagecontainer {
+  position: relative;
+}
+
 .image {
   height: 10em;
   width: 10em;
   color: rgb(59, 57, 57);
   border-radius: 5em;
-  margin-top: 2.5em;
-  margin-right: 2em;
+  border: 1px solid grey;
 }
+
+.editicon {
+  font-size: 22px;
+  color: rgb(43, 42, 42);
+}
+
+.imageupload {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  height: 10em;
+  width: 10em;
+  border-radius: 5em;
+  top: 0;
+  left: 0;
+  background-color: rgba(183, 145, 219, 0.233);
+  opacity: 0;
+  display: flex;
+  z-index: 10;
+}
+
+.imageupload:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
 .info {
   display: flex;
   flex-direction: column;
 }
+
 .username {
   margin-bottom: 9px;
   font-family: 'Prosto One', cursive;
 }
+
 .profession {
   margin-top: 1.5px;
   padding-top: 1px;
@@ -34,17 +73,20 @@
   margin-top: 10px;
   /* padding-left: 50px; */
 }
+
 .connectionitem {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 1px;
 }
+
 .connection h3 {
   font-weight: 500;
   /* margin: 0; */
   padding-top: 1px;
 }
+
 .connection p {
   font-size: 16px;
   font-weight: 600;
@@ -53,10 +95,12 @@
   margin-bottom: 0;
   /* padding-bottom: 1px; */
 }
+
 .name {
   margin-top: 0;
   font-family: 'Miltonian Tattoo', cursive;
 }
+
 .bio {
   margin-top: 2px;
   font-size: 16px;
