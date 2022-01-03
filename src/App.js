@@ -26,7 +26,7 @@ function App() {
       if (user) {
         const docRef = doc(db, "users", user.uid);
         const docSnapshot = await getDoc(docRef);
-        updateUser(docSnapshot.data());
+        updateUser({ id: user.uid, ...docSnapshot.data() });
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
