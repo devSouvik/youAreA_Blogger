@@ -3,8 +3,11 @@ import image from "../../assets/images/person.jpg";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useContext, useState } from "react";
 import ImageUpload from "./ImageUpload";
+import Loader from "../common/Loader";
+import { createPortal } from "react-dom";
 
 const ProfileHeader = () => {
+  const [loading, setLoading] = useState(false);
   const { user } = useContext(GlobalContext);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -39,7 +42,16 @@ const ProfileHeader = () => {
           <h4 className={classes.bio}>{user.bio}</h4>
         )}
       </div>
-      <ImageUpload open={modalVisible} handleClose={hideImagePicker} />
+      <ImageUpload
+        setLoading={setLoading}
+        open={modalVisible}
+        handleClose={hideImagePicker}
+      />
+      {loading &&
+        createPortal(
+          <Loader opacity={0.5} backgroundColor="black" />,
+          document.getElementById("root")
+        )}
     </div>
   );
 };
