@@ -1,96 +1,79 @@
 import DefaultNavbar from "../components/common/DefaultNavbar";
-import BlogCard from "../components/Home_Page/BlogCard";
-import Genres from "../components/Home_Page/Genres";
-import User from "../components/Home_Page/User";
-import user from "../assets/images/user.jpg";
-import user1 from "../assets/images/user1.jpg";
-import user2 from "../assets/images/user2.png";
+// import BlogCard from "../components/Home_Page/BlogCard";
+// import Genres from "../components/Home_Page/Genres";
+// import User from "../components/Home_Page/User";
+// import user from "../assets/images/user.jpg";
+// import user1 from "../assets/images/user1.jpg";
+// import user2 from "../assets/images/user2.png";
 
 // mui imports
-import Grid from "@mui/material/Grid";
+// import Grid from "@mui/material/Grid";
 // import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 // import Paper from "@mui/material/Paper";
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
-const dummyList = [
-  {
-    id: 1,
-    title: "First Blog",
-    author: "Souvik Guria",
-    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
-    flare: "technology",
-  },
-  {
-    id: 2,
-    title: "Second blog",
-    author: "Ram ",
-    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
-    flare: "history",
-  },
-  {
-    id: 3,
-    title: "Third blog",
-    author: "Shyam",
-    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
-    flare: "Culture",
-  },
-  {
-    id: 4,
-    title: "Forth blog",
-    author: "Raju",
-    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
-    flare: "money",
-  },
-  {
-    id: 5,
-    title: "Fifth blog",
-    author: "Babu Bhaiya",
-    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
-    flare: "literature",
-  },
-  {
-    id: 6,
-    title: "third blog",
-    author: "shyam",
-    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
-    flare: "society",
-  },
-  {
-    id: 7,
-    title: "third blog",
-    author: "shyam",
-    desc: " Lorem ipsum dolor sit amet consectetur adipisicing elit.Cum nihil voluptatibus praesentium atque, expedita  minus animi a eum. Officiis enim laudantium quibusdam nulla incidunt.",
-    flare: "education",
-  },
-];
+import "../App.css";
 
-const dummyUserList = [
-  {
-    id: 1,
-    name: "Souvik Guria",
-    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    profilePic: user,
-  },
-  {
-    id: 2,
-    name: "Sneha Bhardwaj",
-    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    profilePic: user2,
-  },
-  {
-    id: 3,
-    name: "FirstName LastName",
-    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    profilePic: user1,
-  },
-];
+// new imports
+import { useEffect, useState } from "react";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { auth, db } from "../firebase";
+// import Typography from "@mui/material/Typography";
+// import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 
 function HomePage() {
+  const [postList, setPostList] = useState([]);
+  // const postsCollectionRef = collection(db, "posts");
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const data = await getDocs(collection(db, "posts"));
+      setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getPosts();
+  }, []);
+
+  const deletePost = async (id) => {
+    const postDoc = doc(db, "posts", id);
+    await deleteDoc(postDoc);
+    // console.log(postList);
+    setPostList((previous) => previous.filter((value) => value.id !== id)); // automatically state updated after every post deletion
+  };
+
   return (
     <>
       <DefaultNavbar />
-      <Container sx={{ marginTop: 5, mb: 5 }} maxWidth="xl">
+      <div className="homePage">
+        {postList.map((post) => {
+          return (
+            <div className="post" key={post.id}>
+              <div className="postHeader">
+                <div className="title">
+                  <h1>{post.title}</h1>
+                </div>
+                {/* <div className="deletePost"></div> */}
+              </div>
+              <div
+                className="postTextContainer"
+                dangerouslySetInnerHTML={{ __html: post.postText }} //formats html tags to normal text
+              />
+              <Typography
+                style={{ fontSize: "1rem", color: "#6c757d", marginTop: 10 }}
+                color="text.secondary"
+              >
+                - Written by &nbsp;
+                <span style={{ fontStyle: "italic", fontWeight: "bold" }}>
+                  {post.author.name}
+                </span>
+              </Typography>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* <Container sx={{ marginTop: 5, mb: 5 }} maxWidth="xl">
         <Box>
           <Grid container spacing={2}>
             <Grid item lg={7} md={8} sm={12} xs={12}>
@@ -119,7 +102,7 @@ function HomePage() {
                   recommended Users
                 </Typography>
               </Container>
-              {/* recomended users  */}
+
               {dummyUserList.map((user) => {
                 return (
                   <User
@@ -129,14 +112,10 @@ function HomePage() {
                   />
                 );
               })}
-              {/* ends */}
             </Grid>
-
-            {/* end of 2nd col */}
           </Grid>
-          {/* end of grid-container  */}
         </Box>
-      </Container>
+      </Container> */}
     </>
   );
 }
