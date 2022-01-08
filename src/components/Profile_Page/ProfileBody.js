@@ -1,9 +1,11 @@
 // import { useEffect, useState } from "react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import classes from "./ProfileBody.module.css";
 import ProfileHeader from "./ProfileHeader";
 import ProfilePageCard from "./ProfilePageCard";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const blogs = [
   {
@@ -49,18 +51,27 @@ const blogs = [
 ];
 
 const ProfileBody = () => {
-  const value = useContext(GlobalContext);
-  console.log(value);
-  // const [loading, setLoading] = useState(false);
-  // useEffect(() => {
-  //   console.log("useEffect initiated");
-  //   setLoading(true);
-  //   console.log("Fetching data");
-  //   setTimeout(() => {
-  //     console.log("Data fetched");
-  //     setLoading(false);
-  //   }, 2000);
-  // }, []);
+  const { user } = useContext(GlobalContext);
+  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    setLoading(true);
+    const postsRef = collection(db, "posts");
+    const q = query(postsRef, where("author.id", "==", user.id));
+    getDocs(q)
+      .then((result) => {
+        const docs = result.docs.map((v) => {
+          return v.data();
+        });
+        setPosts(docs);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [user.id]);
   return (
     <div className={classes.main}>
       <ProfileHeader />
@@ -68,11 +79,9 @@ const ProfileBody = () => {
         <p> My Posts</p>
         <hr />
       </div>
-      {/* {loading && <p>Loading...</p>} */}
-      {/* {!loading && */}
-      {blogs.map((blog, index) => (
-        <ProfilePageCard key={index} {...blog} />
-      ))}
+      {loading && <p>Loading...</p>}
+      {!loading &&
+        posts.map((blog, index) => <ProfilePageCard key={index} {...blog} />)}
     </div>
   );
 };
