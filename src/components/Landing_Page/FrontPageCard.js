@@ -9,12 +9,22 @@ const FrontPageCard = (props) => {
           <div className={classes.imagediv}>
             {/* <img src={person} alt="person" className={classes.image} /> */}
           </div>
-          <h5 className={classes["header__title"]}>{props.author}</h5>
+          {props.author && props.author.name && (
+            <h5 className={classes["header__title"]}>{props.author.name}</h5>
+          )}
         </div>
-        <h3 className={classes["body__main"]}>{props.title}</h3>
-        <p className={classes.subtitle}>
-          {props.date}. {props.readTime} read
-        </p>
+        {props.title && (
+          <h3 className={classes["body__main"]}>{props.title}</h3>
+        )}
+        {props.postText && (
+          <div className={classes.postWrapper}>
+            <div
+              className={classes.bio}
+              dangerouslySetInnerHTML={{ __html: props.postText }}
+            />
+          </div>
+        )}
+        {props.date && <p className={classes.subtitle}>{props.date} </p>}
       </div>
     </div>
   );

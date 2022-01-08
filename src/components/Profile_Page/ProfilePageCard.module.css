@@ -1,70 +1,98 @@
-.main{
+.main {
     display: flex;
-    max-width: 60%;
+    /* max-width: 60%; */
     margin: 1em 1em;
-    /* margin-bottom: 25px; */
-    /* padding-top: 40px;
-    padding-bottom: 10px;
-    padding-left: 35px;
-    padding-right: 30px; */
     padding: 40px 35px 40px 35px;
     background-color: #f8f8f8;
     box-shadow: 1px 5px 5px #dbd9d9;
+    min-height: 130px;
+    max-height: 250px;
+    max-width: 700px;
+    overflow: hidden;
 
 }
-.bio{   
-    font-family: 'Righteous', cursive;
+
+.bio {
+    /* font-family: 'Righteous', cursive;
+    background-color: red;
+    width: 100%;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 30px;
     color: #979595;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+
 }
-.body{
+
+.body {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 }
- h3,h5{
-     margin: 0;
- }
- .subtitle{
-     margin: 0;
-     font-size: 14px;
-     color: rgb(94, 92, 92);
-     /* padding-left: 45px; */
-     padding-top: 15px;
- }
-.body__header{
+
+h3,
+h5 {
+    margin: 0;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: rgb(94, 92, 92);
+    padding-top: 15px;
+}
+
+.body__header {
     display: flex;
     align-items: center;
     margin-bottom: 1px;
 }
 
-.body__main{
+.body__main {
     margin-bottom: 5px;
     padding-top: 10px;
     font-family: 'Righteous', cursive;
     font-weight: 600;
 }
-.header__title{
+
+.header__title {
     font-size: 15px;
     font-weight: 600;
     font-family: 'Reem Kufi', sans-serif;
 }
-.image, .imagediv {
-    width:40px;
-    height:40px;
+
+.image,
+.imagediv {
+    width: 40px;
+    height: 40px;
 
 }
-.imagediv{
+
+.imagediv {
     border-radius: 50px;
     background-color: rgb(143, 139, 139);
     margin-right: 8px;
 }
-.button{
+
+/* .button {
     border-radius: 15px;
     border: 1px solid grey;
     margin-left: 10px;
     color: rgb(90, 90, 92);
     padding: 5px 8px;
+} */
+
+.postWrapper {
+    max-width: 600px;
+    overflow: hidden;
 }
