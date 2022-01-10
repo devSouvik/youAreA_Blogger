@@ -84,7 +84,10 @@ export default function Settings_col() {
             <div style={{ marginBottom: "1.5rem" }}>
               <Stack direction="row" spacing={2}>
                 <Avatar alt="Remy Sharp" src={user.profile_picture} />
-                <Typography variant="h4" sx={{ textAlign: "left" }}>
+                <Typography
+                  variant="h4"
+                  sx={{ textAlign: "left", fontWeight: "bold" }}
+                >
                   {user.username}
                 </Typography>
               </Stack>

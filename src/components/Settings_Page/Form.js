@@ -26,12 +26,8 @@ const useStyles = makeStyles({
 export default function Form() {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
-
-  // const handleClick = () => {
-  //   console.log(name, bio, phoneNumber);
-  // };
 
   const handleChange = (e) => {
     setGender(e.target.value);
@@ -42,6 +38,7 @@ export default function Form() {
   return (
     <>
       <TextField
+        inputProps={{ style: { fontWeight: "bold" } }}
         FormHelperTextProps={{
           className: classes.helperText,
         }}
@@ -61,6 +58,7 @@ export default function Form() {
         variant="outlined"
       />
       <TextField
+        inputProps={{ style: { fontWeight: "bold" } }}
         FormHelperTextProps={{
           className: classes.helperText,
         }}
@@ -68,18 +66,19 @@ export default function Form() {
           className: classes.labelText,
         }}
         onChange={(e) => {
-          setPhoneNumber(e.target.value);
-          console.log(phoneNumber);
+          setEmail(e.target.value);
+          console.log(email);
         }}
         sx={{ fontWeight: "bold" }}
-        helperText="Please enter your Phone Number"
+        helperText="Please enter your new Email id"
         fullWidth
         margin="normal"
         id="outlined-basic"
-        label="Phone"
+        label="Email"
         variant="outlined"
       />
       <TextField
+        inputProps={{ style: { fontWeight: "bold" } }}
         FormHelperTextProps={{
           className: classes.helperText,
         }}

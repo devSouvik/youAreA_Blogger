@@ -67,13 +67,7 @@ export default function BlogCard({ title, author, desc, children, time }) {
           subheaderTypographyProps={{
             fontWeight: "bold",
           }}
-          avatar={
-            <Avatar
-              alt={user.username}
-              src={user.profile_picture}
-              sx={{ width: 44, height: 44 }}
-            />
-          }
+          avatar={<Avatar alt="" src="name" sx={{ width: 44, height: 44 }} />}
           action={children}
           title={title}
           subheader={author}
