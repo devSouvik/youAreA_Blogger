@@ -10,9 +10,9 @@ const Navbar = () => {
       </div>
 
       <div className={classes.rightContainer}>
-        <a href="#" className={classes.navItem}>
+        <Link to="blog-write" className={classes.navItem}>
           Write
-        </a>
+        </Link>
         <Link to="signin" className={classes.navItem}>
           Sign In
         </Link>

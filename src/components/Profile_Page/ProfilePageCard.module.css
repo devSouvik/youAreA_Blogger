@@ -6,10 +6,17 @@
     background-color: #f8f8f8;
     box-shadow: 1px 5px 5px #dbd9d9;
     min-height: 130px;
-    max-height: 250px;
-    max-width: 700px;
+    max-height: 300px;
+    width: 700px;
     overflow: hidden;
 
+}
+
+.readMore {
+    color: rgb(14, 100, 230);
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 6px;
 }
 
 .bio {
@@ -24,20 +31,16 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    overflow: hidden; */
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    white-space: normal;
+    overflow: break-word */
+    text-overflow: clip;
+    overflow-wrap: break-word;
 
 }
 
 .body {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 h3,
@@ -95,4 +98,9 @@ h5 {
 .postWrapper {
     max-width: 600px;
     overflow: hidden;
+}
+
+.postWrapper img {
+    height: 50px;
+    width: 50px;
 }

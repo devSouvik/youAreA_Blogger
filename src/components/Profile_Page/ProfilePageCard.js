@@ -1,8 +1,49 @@
+import { memo, useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "./ProfilePageCard.module.css";
 // import person from "../../assets/images/person.jpg";
 // import { text } from "@fortawesome/fontawesome-svg-core";
 
 const ProfilePageCard = (props) => {
+  const navigate = useNavigate();
+  let body = "";
+  const readMoreTag = `<a id=${props.id} href="/blog-reading/${props.id}" className=${classes.readMore}>
+      ...read more
+    </a>`;
+
+  if (props.postText.slice(0, 20).includes("<img")) {
+    const imgIndex = props.postText.search("<im");
+    if (imgIndex > 0) {
+      const index = props.postText.slice(imgIndex).search(">");
+      body =
+        props.postText.slice(0, index + 130).trim() +
+        `<span class = "${classes.readMore}">...read more</span>`;
+    } else {
+      const index = props.postText.search(">");
+      body =
+        props.postText.slice(0, index + 130).trim() +
+        `<span class = "${classes.readMore}">...read more</span>`;
+    }
+    // body = props.postText.slice(0, index + 2);
+  } else {
+    body = props.postText.slice(0, 120).trim() + readMoreTag;
+  }
+
+  const handler = useCallback(
+    (event) => {
+      event.preventDefault();
+      navigate("/blog-reading/" + props.id);
+    },
+    [navigate, props.id]
+  );
+
+  useEffect(() => {
+    const el = document.getElementById(props.id);
+    el.addEventListener("click", handler);
+    return () => {
+      el.removeEventListener("click", handler);
+    };
+  }, [props.id, handler]);
   return (
     <div className={classes.main}>
       <div className={classes.body}>
@@ -17,11 +58,11 @@ const ProfilePageCard = (props) => {
         {props.title && (
           <h3 className={classes["body__main"]}>{props.title}</h3>
         )}
-        {props.postText && (
+        {body && (
           <div className={classes.postWrapper}>
             <div
               className={classes.bio}
-              dangerouslySetInnerHTML={{ __html: props.postText }}
+              dangerouslySetInnerHTML={{ __html: body }}
             />
           </div>
         )}
@@ -31,4 +72,4 @@ const ProfilePageCard = (props) => {
   );
 };
 
-export default ProfilePageCard;
+export default memo(ProfilePageCard);

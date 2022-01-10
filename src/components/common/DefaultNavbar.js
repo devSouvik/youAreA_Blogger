@@ -4,21 +4,35 @@ import { useState, useContext } from "react";
 import DropDown from "./DropDown";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import {
+  collection,
+  endAt,
+  getDocs,
+  orderBy,
+  query,
+  startAt,
+} from "firebase/firestore";
+import { db } from "../../firebase";
 
 const DefaultNavbar = () => {
   const [searchInput, setSearchInput] = useState("");
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
+    const q = query(
+      collection(db, "posts"),
+      orderBy("title"),
+      startAt(searchInput),
+      endAt(searchInput + "\uf8ff")
+    );
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((value) => value.data());
+    console.log(data);
   };
   const searchInputChangehandler = (event) => {
     setSearchInput(event.target.value);
   };
   const context = useContext(GlobalContext);
 
-  const handleChange = () => {
-    context.updateValue(context.user + 1);
-    console.log("handleChange");
-  };
   let searchClasses = classes.search;
 
   if (searchInput.length > 0) searchClasses += " " + classes.active;
@@ -30,13 +44,14 @@ const DefaultNavbar = () => {
       </Link>
 
       <div className={classes.rightContainer}>
-        <button className={classes.startButton}>Write</button>
+        <Link to="/blog-write" className={classes.startButton}>
+          Write
+        </Link>
         <form className={classes.searchform} onSubmit={submitHandler}>
           <img
             src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"
             className={classes.searchicon}
             alt="search-icon"
-            onClick={handleChange}
           />
           <input
             type="text"
@@ -44,7 +59,6 @@ const DefaultNavbar = () => {
             className={searchClasses}
             autoComplete="off"
             onChange={searchInputChangehandler}
-            onClick={handleChange}
           />
         </form>
 

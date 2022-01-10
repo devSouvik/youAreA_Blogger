@@ -17,6 +17,7 @@ import Loader from "./components/common/Loader";
 import Error from "./components/common/Error";
 import { doc, getDoc } from "firebase/firestore";
 import { GlobalContext } from "./contexts/GlobalContext";
+import BlogReadingPage from "./pages/BlogReadingPage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -72,6 +73,14 @@ function App() {
           element={
             <Auth auth={isAuthenticated}>
               <HomePage />
+            </Auth>
+          }
+        />
+        <Route
+          path="/blog-reading/:postId"
+          element={
+            <Auth auth={isAuthenticated}>
+              <BlogReadingPage />
             </Auth>
           }
         />
