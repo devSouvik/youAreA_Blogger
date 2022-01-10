@@ -127,6 +127,7 @@ function HomePage() {
                         )
                       }
                       time={post.time}
+                      dp={post.author.profile_picture}
                     />
                   </Grid>
                 );

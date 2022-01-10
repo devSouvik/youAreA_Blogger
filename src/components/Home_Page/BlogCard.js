@@ -51,7 +51,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BlogCard({ title, author, desc, children, time }) {
+export default function BlogCard({ title, author, desc, children, time, dp }) {
   const classes = useStyles();
 
   const { user } = useContext(GlobalContext);
@@ -67,7 +67,7 @@ export default function BlogCard({ title, author, desc, children, time }) {
           subheaderTypographyProps={{
             fontWeight: "bold",
           }}
-          avatar={<Avatar alt="" src="name" sx={{ width: 44, height: 44 }} />}
+          avatar={<Avatar alt="" src={dp} sx={{ width: 44, height: 44 }} />}
           action={children}
           title={title}
           subheader={author}
