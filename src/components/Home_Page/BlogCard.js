@@ -6,6 +6,12 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
+import CardHeader from "@mui/material/CardHeader";
+import Avatar from "@mui/material/Avatar";
+
+import { useContext } from "react";
+
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 const useStyles = makeStyles({
   flareBtn: {
@@ -14,60 +20,79 @@ const useStyles = makeStyles({
     borderRadius: 50,
     fontSize: 19,
   },
-  author: {
+
+  timeStamp: {
     fontStyle: "italic",
     fontWeight: "bold",
   },
+
   titleStyle: {
     fontSize: 25,
     fontWeight: "bold",
   },
+
   flareStyle: {
-    marginLeft: "50px",
+    marginLeft: "100px",
     borderRadius: "50px",
     backgroundColor: "whitesmoke",
     paddingLeft: "10px",
     paddingRight: "10px",
     fontFamily: "Andale Mono, monospace",
   },
+
   descStyle: {
-    marginBottom: "1rem",
     fontWeight: 900,
   },
+
   footer: {
     fontSize: "1rem",
     color: "#6c757d",
+    fontWeight: 900,
   },
 });
 
-export default function BlogCard({ title, author, desc, flare }) {
+export default function BlogCard({ title, author, desc, children, time }) {
   const classes = useStyles();
+
+  const { user } = useContext(GlobalContext);
 
   return (
     <>
       <Card>
+        <CardHeader
+          titleTypographyProps={{
+            fontSize: 22,
+            fontWeight: "bold",
+          }}
+          subheaderTypographyProps={{
+            fontWeight: "bold",
+          }}
+          avatar={
+            <Avatar
+              alt={user.username}
+              src={user.profile_picture}
+              sx={{ width: 44, height: 44 }}
+            />
+          }
+          action={children}
+          title={title}
+          subheader={author}
+        />
+
         <CardContent>
           <Typography
-            className={classes.titleStyle}
-            color="text.secondary"
-            gutterBottom
-          >
-            {title}
-            <Button size="small" className={classes.flareStyle}>
-              {flare}
-            </Button>
-          </Typography>
-          <Typography className={classes.descStyle} variant="body1">
-            {desc}
-          </Typography>
+            noWrap
+            className={classes.descStyle}
+            variant="body1"
+            dangerouslySetInnerHTML={desc}
+          />
           <Typography className={classes.footer} color="text.secondary">
-            - Written by
-            <span className={classes.author}> {author}</span>
+            - <span className={classes.timeStamp}> {time}</span>
           </Typography>
         </CardContent>
         <CardActions>
           <Button size="small" sx={{ fontWeight: "bold" }}>
-            Learn More
+            Read More
           </Button>
         </CardActions>
       </Card>

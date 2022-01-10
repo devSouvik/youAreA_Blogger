@@ -1,29 +1,47 @@
 import DefaultNavbar from "../components/common/DefaultNavbar";
-// import BlogCard from "../components/Home_Page/BlogCard";
-// import Genres from "../components/Home_Page/Genres";
-// import User from "../components/Home_Page/User";
-// import user from "../assets/images/user.jpg";
-// import user1 from "../assets/images/user1.jpg";
-// import user2 from "../assets/images/user2.png";
+import BlogCard from "../components/Home_Page/BlogCard";
+import Genres from "../components/Home_Page/Genres";
+import User from "../components/Home_Page/User";
+import user from "../assets/images/user.jpg";
 
 // mui imports
-// import Grid from "@mui/material/Grid";
-// import { styled } from "@mui/material/styles";
-// import Box from "@mui/material/Box";
-// import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+import IconButton from "@mui/material/IconButton";
 
 import "../App.css";
-
-// new imports
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { auth, db } from "../firebase";
 // import Typography from "@mui/material/Typography";
-import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+// import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+
+let dummyUserList = [
+  {
+    name: "souvik guria",
+    bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, sed?",
+    profile_pic: user,
+  },
+  {
+    name: "souvik guria",
+    bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, sed?",
+    profile_pic: user,
+  },
+  {
+    name: "souvik guria",
+    bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, sed?",
+    profile_pic: user,
+  },
+];
 
 function HomePage() {
   const [postList, setPostList] = useState([]);
+
   // const postsCollectionRef = collection(db, "posts");
 
   useEffect(() => {
@@ -45,7 +63,7 @@ function HomePage() {
   return (
     <>
       <DefaultNavbar />
-      <div className="homePage">
+      {/* <div className="homePage">
         {postList.map((post) => {
           return (
             <div className="post" key={post.id}>
@@ -83,20 +101,32 @@ function HomePage() {
             </div>
           );
         })}
-      </div>
+      </div> */}
 
-      {/* <Container sx={{ marginTop: 5, mb: 5 }} maxWidth="xl">
+      <Container sx={{ marginTop: 5, mb: 5 }} maxWidth="xl">
         <Box>
           <Grid container spacing={2}>
             <Grid item lg={7} md={8} sm={12} xs={12}>
-              {dummyList.map((listItem) => {
+              {postList.map((post) => {
                 return (
-                  <Grid sx={{ mb: 3 }} key={listItem.id}>
+                  <Grid sx={{ mb: 3 }} key={post.id}>
                     <BlogCard
-                      title={listItem.title}
-                      author={listItem.author}
-                      desc={listItem.desc}
-                      flare={listItem.flare}
+                      title={post.title}
+                      desc={{ __html: post.postText }}
+                      author={post.author.name}
+                      children={
+                        post.author.id === auth.currentUser.uid && (
+                          <IconButton
+                            aria-label="settings"
+                            onClick={() => {
+                              deletePost(post.id);
+                            }}
+                          >
+                            <DeleteOutlineRoundedIcon />
+                          </IconButton>
+                        )
+                      }
+                      time={post.time}
                     />
                   </Grid>
                 );
@@ -111,7 +141,7 @@ function HomePage() {
                   gutterBottom
                   variant="h6"
                 >
-                  recommended Users
+                  Recommended Users
                 </Typography>
               </Container>
 
@@ -120,14 +150,14 @@ function HomePage() {
                   <User
                     name={user.name}
                     bio={user.bio}
-                    profilePic={user.profilePic}
+                    profilePic={user.profile_pic}
                   />
                 );
               })}
             </Grid>
           </Grid>
         </Box>
-      </Container> */}
+      </Container>
     </>
   );
 }

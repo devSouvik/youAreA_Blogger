@@ -33,10 +33,15 @@ export default function Blog_writing() {
   const { user } = useContext(GlobalContext);
 
   const postsCollectionRef = collection(db, "posts");
+
   const createPost = async () => {
+    const date = new Date();
+    let stringDate = date.toDateString();
+
     await addDoc(postsCollectionRef, {
       title,
       postText: postText.current,
+      time: stringDate,
       author: { name: user.username, id: user.id },
     });
     navigate("/home");
