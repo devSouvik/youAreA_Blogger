@@ -20,7 +20,7 @@ import { useEffect, useState } from "react";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { auth, db } from "../firebase";
 // import Typography from "@mui/material/Typography";
-// import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 
 function HomePage() {
   const [postList, setPostList] = useState([]);
@@ -53,7 +53,19 @@ function HomePage() {
                 <div className="title">
                   <h1>{post.title}</h1>
                 </div>
-                {/* <div className="deletePost"></div> */}
+                <div className="deletePost">
+                  {post.author.id === auth.currentUser.uid && (
+                    <button
+                      onClick={() => {
+                        deletePost(post.id);
+                      }}
+                    >
+                      <DeleteOutlineRoundedIcon
+                        sx={{ color: "white", fontSize: 40 }}
+                      />
+                    </button>
+                  )}
+                </div>
               </div>
               <div
                 className="postTextContainer"
