@@ -29,6 +29,7 @@ export default function Blog_writing() {
   const [title, setTitle] = useState("");
   let navigate = useNavigate();
   const postText = useRef("");
+
   const { user } = useContext(GlobalContext);
 
   const postsCollectionRef = collection(db, "posts");

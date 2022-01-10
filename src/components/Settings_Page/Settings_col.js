@@ -1,7 +1,7 @@
 import Form from "./Form";
-import user from "../../assets/images/user.jpg";
+// import user from "../../assets/images/user.jpg";
 import "./Settings_col.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Security from "./Security";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +14,7 @@ import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -26,6 +27,8 @@ const Item = styled(Paper)(({ theme }) => ({
 toast.configure();
 export default function Settings_col() {
   const [view, setView] = useState(<Form />);
+
+  const { user } = useContext(GlobalContext);
 
   // const notify = () => {
   //   toast.success("Email sent, please check your inbox!", {
@@ -80,9 +83,9 @@ export default function Settings_col() {
           <Grid item xs={12} md={12} lg={8}>
             <div style={{ marginBottom: "1.5rem" }}>
               <Stack direction="row" spacing={2}>
-                <Avatar alt="Remy Sharp" src={user} />
+                <Avatar alt="Remy Sharp" src={user.profile_picture} />
                 <Typography variant="h4" sx={{ textAlign: "left" }}>
-                  SouvikGuria
+                  {user.username}
                 </Typography>
               </Stack>
             </div>
