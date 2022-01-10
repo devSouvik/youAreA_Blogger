@@ -11,6 +11,7 @@ import {
   orderBy,
   query,
   startAt,
+  where,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -18,11 +19,19 @@ const DefaultNavbar = () => {
   const [searchInput, setSearchInput] = useState("");
   const submitHandler = async (event) => {
     event.preventDefault();
+    // const q = query(
+    //   collection(db, "posts"),
+    //   orderBy("title"),
+    //   startAt(searchInput),
+    //   endAt(searchInput + "\uf8ff")
+    // );
     const q = query(
       collection(db, "posts"),
-      orderBy("title"),
-      startAt(searchInput),
-      endAt(searchInput + "\uf8ff")
+      where(
+        "keywords",
+        "array-contains-any",
+        searchInput.split(" ").map((value) => value.toUpperCase())
+      )
     );
     const querySnapshot = await getDocs(q);
     const data = querySnapshot.docs.map((value) => value.data());

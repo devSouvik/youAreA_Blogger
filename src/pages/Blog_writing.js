@@ -42,7 +42,12 @@ export default function Blog_writing() {
       title,
       postText: postText.current,
       time: stringDate,
-      author: { name: user.username, id: user.id },
+      keywords: title.split(" ").map((value) => value.toUpperCase()),
+      author: {
+        name: user.username,
+        id: user.id,
+        profile_picture: user.profile_picture,
+      },
     });
     navigate("/home");
   };

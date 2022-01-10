@@ -78,7 +78,12 @@ h5 {
 .imagediv {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
 
+}
+
+.image {
+    border: 1px solid grey;
 }
 
 .imagediv {

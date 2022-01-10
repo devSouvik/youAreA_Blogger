@@ -49,7 +49,13 @@ const ProfilePageCard = (props) => {
       <div className={classes.body}>
         <div className={classes["body__header"]}>
           <div className={classes.imagediv}>
-            {/* <img src={person} alt="person" className={classes.image} /> */}
+            {props.author.profile_picture && (
+              <img
+                src={props.author.profile_picture}
+                alt="person"
+                className={classes.image}
+              />
+            )}
           </div>
           {props.author && props.author.name && (
             <h5 className={classes["header__title"]}>{props.author.name}</h5>
