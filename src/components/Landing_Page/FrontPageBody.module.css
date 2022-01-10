@@ -1,6 +1,18 @@
-.main{
+.main {
     display: flex;
     padding: 1em 4em;
     flex-wrap: wrap;
     margin-top: 2em;
+}
+
+.trending {
+    padding-left: 40px;
+    padding-top: 20px;
+    font-size: 14px;
+    color: rgb(34, 33, 33);
+}
+
+.icon {
+    padding-right: 9px;
+    color: rgb(34, 33, 33);
 }

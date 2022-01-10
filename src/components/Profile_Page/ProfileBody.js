@@ -61,7 +61,10 @@ const ProfileBody = () => {
     getDocs(q)
       .then((result) => {
         const docs = result.docs.map((v) => {
-          return v.data();
+          return {
+            id: v.id,
+            ...v.data(),
+          };
         });
         setPosts(docs);
       })

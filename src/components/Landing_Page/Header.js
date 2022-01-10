@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import classes from "./Header.module.css";
 import image from "../../assets/images/logos/small-logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,9 +12,9 @@ const Header = () => {
           It's easy and free to post your thinking on any topic and connect with
           millons of readers.
         </h4>
-        <a href="#" className={classes.startButton}>
+        <Link to="blog-write" className={classes.startButton}>
           Start Writing
-        </a>
+        </Link>
       </div>
       <div></div>
       <img className={classes["small-logo"]} src={image} alt="brand-logo" />

@@ -16,14 +16,14 @@ const FrontPageCard = (props) => {
         {props.title && (
           <h3 className={classes["body__main"]}>{props.title}</h3>
         )}
-        {props.postText && (
+        {/* {props.postText && (
           <div className={classes.postWrapper}>
             <div
               className={classes.bio}
               dangerouslySetInnerHTML={{ __html: props.postText }}
             />
           </div>
-        )}
+        )} */}
         {props.date && <p className={classes.subtitle}>{props.date} </p>}
       </div>
     </div>

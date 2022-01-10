@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import { db } from "../../firebase";
 import classes from "./FrontPageBody.module.css";
@@ -43,7 +43,9 @@ const FrontPageBody = () => {
   useEffect(() => {
     setLoading(true);
     const postsRef = collection(db, "posts");
-    getDocs(postsRef)
+
+    const q = query(postsRef, limit(5));
+    getDocs(q)
       .then((result) => {
         const docs = result.docs.map((v) => {
           return v.data();
@@ -58,10 +60,16 @@ const FrontPageBody = () => {
       });
   }, []);
   return (
-    <div className={classes.main}>
-      {loading && <p>Loading...</p>}
-      {!loading &&
-        posts.map((blog, index) => <FrontPageCard key={index} {...blog} />)}
+    <div>
+      <h3 className={classes.trending}>
+        <i className={`fas fa-book-reader ${classes.icon}`} />
+        NEW ON BLOGGER...
+      </h3>
+      <div className={classes.main}>
+        {loading && <p>Loading...</p>}
+        {!loading &&
+          posts.map((blog, index) => <FrontPageCard key={index} {...blog} />)}
+      </div>
     </div>
   );
 };
