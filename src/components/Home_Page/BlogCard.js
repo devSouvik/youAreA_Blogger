@@ -9,7 +9,7 @@ import { makeStyles } from "@mui/styles";
 import CardHeader from "@mui/material/CardHeader";
 import Avatar from "@mui/material/Avatar";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { GlobalContext } from "../../contexts/GlobalContext";
 
@@ -41,7 +41,9 @@ const useStyles = makeStyles({
   },
 
   descStyle: {
-    fontWeight: 900,
+    fontWeight: "bold",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
   },
 
   footer: {
@@ -49,16 +51,33 @@ const useStyles = makeStyles({
     color: "#6c757d",
     fontWeight: 900,
   },
+
+  cardClass: {
+    backgroundColor: "#f3f3f3",
+  },
+  readMore: {
+    marginLeft: 5,
+    fontWeight: "bold",
+    color: "#1F51FF",
+  },
 });
 
-export default function BlogCard({ title, author, desc, children, time, dp }) {
+export default function BlogCard({
+  title,
+  author,
+  desc,
+  children,
+  time,
+  dp,
+  link,
+}) {
   const classes = useStyles();
 
   const { user } = useContext(GlobalContext);
 
   return (
     <>
-      <Card>
+      <Card className={classes.cardClass}>
         <CardHeader
           titleTypographyProps={{
             fontSize: 22,
@@ -85,9 +104,12 @@ export default function BlogCard({ title, author, desc, children, time, dp }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" sx={{ fontWeight: "bold" }}>
+          {/* <Button size="small" sx={{ fontWeight: "bold" }}>
             Read More
-          </Button>
+          </Button> */}
+          <a href={`/blog-reading/${link}`} className={classes.readMore}>
+            Read More
+          </a>
         </CardActions>
       </Card>
     </>

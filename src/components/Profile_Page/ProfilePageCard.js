@@ -44,6 +44,7 @@ const ProfilePageCard = (props) => {
       el.removeEventListener("click", handler);
     };
   }, [props.id, handler]);
+
   return (
     <div className={classes.main}>
       <div className={classes.body}>
