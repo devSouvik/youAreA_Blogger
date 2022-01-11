@@ -74,7 +74,7 @@ export default function Settings_col() {
                     setView(<Security />);
                   }}
                 >
-                  Security
+                  About Us
                 </div>
               </Item>
             </Stack>

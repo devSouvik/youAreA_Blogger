@@ -3,7 +3,6 @@
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import CardHeader from "@mui/material/CardHeader";
@@ -12,6 +11,8 @@ import Avatar from "@mui/material/Avatar";
 import { useContext, useState } from "react";
 
 import { GlobalContext } from "../../contexts/GlobalContext";
+
+import { Markup } from "interweave";
 
 const useStyles = makeStyles({
   flareBtn: {
@@ -55,10 +56,17 @@ const useStyles = makeStyles({
   cardClass: {
     backgroundColor: "#f3f3f3",
   },
+
   readMore: {
     marginLeft: 5,
-    fontWeight: "bold",
     color: "#1F51FF",
+    marginRight: 10,
+    marginBottom: "5px",
+  },
+
+  parentFlexRight: {
+    display: "flex",
+    justifyContent: "flex-end",
   },
 });
 
@@ -91,22 +99,14 @@ export default function BlogCard({
           title={title}
           subheader={author}
         />
-
         <CardContent>
-          <Typography
-            noWrap
-            className={classes.descStyle}
-            variant="body1"
-            dangerouslySetInnerHTML={desc}
-          />
+          {/* <div dangerouslySetInnerHTML={desc} /> */}
+          <Markup content={desc} />
           <Typography className={classes.footer} color="text.secondary">
             - <span className={classes.timeStamp}> {time}</span>
           </Typography>
         </CardContent>
-        <CardActions>
-          {/* <Button size="small" sx={{ fontWeight: "bold" }}>
-            Read More
-          </Button> */}
+        <CardActions className={classes.parentFlexRight}>
           <a href={`/blog-reading/${link}`} className={classes.readMore}>
             Read More
           </a>

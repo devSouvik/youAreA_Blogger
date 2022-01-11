@@ -5,13 +5,6 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
-  helperText: {
-    fontWeight: "bold",
-  },
-  labelText: {
-    color: "black",
-    fontWeight: "bold",
-  },
   para: {
     marginBottom: 20,
     textAlign: "left",
@@ -26,18 +19,22 @@ export default function Security() {
     <>
       <Container>
         <Typography variant="body1" className={classes.para}>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Necessitatibus quasi porro voluptatibus accusamus. Laboriosam,
-          distinctio ipsam doloremque maxime nisi harum, ex, debitis esse
-          commodi quia enim repellat maiores suscipit dolorem.
+          ◉ Truley open source
         </Typography>
         <Typography variant="body1" className={classes.para}>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis
-          aliquid unde pariatur ipsum porro molestias voluptatum odit
-          laudantium, obcaecati aspernatur? Corporis voluptas, est aliquam
-          dolorem dignissimos dolore nulla nemo quam a, odio temporibus.
-          Exercitationem rerum veritatis quaerat sapiente nisi doloremque fugiat
-          doloribus, laboriosam sequi rem aut temporibus dolorem minus a.
+          ◉ No user data collection
+        </Typography>
+        <Typography variant="body1" className={classes.para}>
+          ◉ Protected Database system from Google
+        </Typography>
+        <Typography variant="body1" className={classes.para}>
+          ◉ No selling of private user data
+        </Typography>
+        <Typography variant="body1" className={classes.para}>
+          ◉ No hidden charges
+        </Typography>
+        <Typography variant="body1" className={classes.para}>
+          ◉ No advertisement
         </Typography>
       </Container>
     </>

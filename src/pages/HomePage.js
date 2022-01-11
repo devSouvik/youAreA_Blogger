@@ -62,11 +62,16 @@ function HomePage() {
           <Grid container spacing={2}>
             <Grid item lg={7} md={8} sm={12} xs={12}>
               {postList.map((post) => {
+                // truncate
+                var text = post.postText;
+                var length = 300;
+                var trimmedString = text.substring(0, length);
+                let finalString = trimmedString + " ...";
                 return (
                   <Grid sx={{ mb: 3 }} key={post.id}>
                     <BlogCard
                       title={post.title}
-                      desc={{ __html: post.postText }}
+                      desc={finalString}
                       author={post.author.name}
                       children={
                         post.author.id === auth.currentUser.uid && (

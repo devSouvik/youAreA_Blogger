@@ -66,6 +66,7 @@ export default function Blog_writing() {
           }}
         >
           <TextField
+            inputProps={{ style: { fontWeight: "bold" } }}
             fullWidth
             label="Post Title"
             id="storyTitle"
