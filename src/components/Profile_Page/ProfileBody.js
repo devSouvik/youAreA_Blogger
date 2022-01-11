@@ -83,6 +83,7 @@ const ProfileBody = () => {
         <hr />
       </div>
       {loading && <p>Loading...</p>}
+      {!loading && posts.length === 0 && <h3>No data found</h3>}
       {!loading &&
         posts.map((blog, index) => <ProfilePageCard key={index} {...blog} />)}
     </div>

@@ -1,13 +1,18 @@
-import { doc, getDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { IconButton } from "@mui/material";
+import { deleteDoc, doc, getDoc } from "firebase/firestore";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import classes from "./BlogReading.module.css";
+import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 const BlogReading = () => {
   const { postId } = useParams();
+  const { user } = useContext(GlobalContext);
   const [loading, setLoading] = useState(false);
   const [post, setPost] = useState();
+  const navigate = useNavigate();
   useEffect(() => {
     async function getDetails() {
       setLoading(true);
@@ -31,10 +36,46 @@ const BlogReading = () => {
     return <h2>error</h2>;
   }
 
+  const deletePost = async () => {
+    const postDoc = doc(db, "posts", postId);
+    await deleteDoc(postDoc);
+    navigate(-1);
+  };
+
   return (
-    <div>
-      <h3 className={classes.title}>{post.title}</h3>
-      <div dangerouslySetInnerHTML={{ __html: post.postText }} />
+    <div className={classes.main}>
+      <div className={classes.titlediv}>
+        <h3 className={classes.title}>{post.title}</h3>
+        <div className={classes.username}>
+          <div className={classes.usernameleft}>
+            <div className={classes.imagediv}>
+              {post.author.profile_picture && (
+                <img
+                  src={post.author.profile_picture}
+                  alt="person"
+                  className={classes.image}
+                />
+              )}
+            </div>
+            {post.author && post.author.name && (
+              <h5 className={classes["header__title"]}>{post.author.name}</h5>
+            )}
+            <h4 className={classes.time}>
+              <i>{post.time}</i>
+            </h4>
+          </div>
+          {post.author.id === user.id && (
+            <IconButton aria-label="settings" onClick={deletePost}>
+              <DeleteOutlineRoundedIcon />
+            </IconButton>
+          )}
+        </div>
+      </div>
+      {/* <h3 className={classes.title}>{post.author.profile_picture}</h3> */}
+      <div
+        className={classes.body}
+        dangerouslySetInnerHTML={{ __html: post.postText }}
+      />
     </div>
   );
 };

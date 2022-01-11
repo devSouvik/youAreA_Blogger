@@ -23,7 +23,6 @@ const DropDown = () => {
       alert("Something went wrong");
     }
   };
-  console.log("dp");
   return (
     <div className={classes.main}>
       <img
@@ -48,7 +47,6 @@ const DropDown = () => {
 export default DropDown;
 
 const DropDownModal = ({ isVisible, user, logoutHandler }) => {
-  console.log("dm");
   if (!isVisible) return null;
   return createPortal(
     <div className={classes.dropdown}>
