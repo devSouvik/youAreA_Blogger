@@ -15,14 +15,10 @@ const ProfilePageCard = (props) => {
     const imgIndex = props.postText.search("<im");
     if (imgIndex > 0) {
       const index = props.postText.slice(imgIndex).search(">");
-      body =
-        props.postText.slice(0, index + 130).trim() +
-        `<span class = "${classes.readMore}">...read more</span>`;
+      body = props.postText.slice(0, index + 130).trim() + readMoreTag;
     } else {
       const index = props.postText.search(">");
-      body =
-        props.postText.slice(0, index + 130).trim() +
-        `<span class = "${classes.readMore}">...read more</span>`;
+      body = props.postText.slice(0, index + 130).trim() + readMoreTag;
     }
     // body = props.postText.slice(0, index + 2);
   } else {
@@ -39,9 +35,9 @@ const ProfilePageCard = (props) => {
 
   useEffect(() => {
     const el = document.getElementById(props.id);
-    el.addEventListener("click", handler);
+    if (el) el.addEventListener("click", handler);
     return () => {
-      el.removeEventListener("click", handler);
+      if (el) el.removeEventListener("click", handler);
     };
   }, [props.id, handler]);
 

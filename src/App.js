@@ -18,6 +18,8 @@ import Error from "./components/common/Error";
 import { doc, getDoc } from "firebase/firestore";
 import { GlobalContext } from "./contexts/GlobalContext";
 import BlogReadingPage from "./pages/BlogReadingPage";
+import ForgetPassword from "./pages/ForgetPassword";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -69,10 +71,27 @@ function App() {
           }
         />
         <Route
+          path="/password/reset"
+          element={
+            <NoAuth auth={isAuthenticated}>
+              <ForgetPassword />
+            </NoAuth>
+          }
+        />
+
+        <Route
           path="/home"
           element={
             <Auth auth={isAuthenticated}>
               <HomePage />
+            </Auth>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <Auth auth={isAuthenticated}>
+              <SearchPage />
             </Auth>
           }
         />
