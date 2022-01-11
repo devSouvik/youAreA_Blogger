@@ -12,8 +12,10 @@ function Genres() {
 
         <button class="button">Technology</button>
         <button class="button">Money</button>
+        <button class="button">Travel</button>
+        <button class="button">Photography</button>
         <button class="button">Health</button>
-        <button class="button">education</button>
+        <button class="button">Education</button>
         <button class="button">Society</button>
         <button class="button">Literature</button>
         <button class="button">Culture</button>

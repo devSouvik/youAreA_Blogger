@@ -57,7 +57,7 @@ function HomePage() {
   return (
     <>
       <DefaultNavbar />
-      <Container sx={{ marginTop: 5, mb: 5 }} maxWidth="xl">
+      <Container sx={{ marginTop: 5, mb: 5, ml: 3 }} maxWidth="xl">
         <Box>
           <Grid container spacing={2}>
             <Grid item lg={7} md={8} sm={12} xs={12}>
