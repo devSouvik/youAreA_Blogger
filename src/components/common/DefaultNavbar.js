@@ -2,7 +2,7 @@ import classes from "./DefaultNavbar.module.css";
 import image from "../../assets/images/logos/logo.png";
 import { useState, useContext } from "react";
 import DropDown from "./DropDown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import {
   collection,
@@ -17,25 +17,10 @@ import { db } from "../../firebase";
 
 const DefaultNavbar = () => {
   const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
   const submitHandler = async (event) => {
     event.preventDefault();
-    // const q = query(
-    //   collection(db, "posts"),
-    //   orderBy("title"),
-    //   startAt(searchInput),
-    //   endAt(searchInput + "\uf8ff")
-    // );
-    const q = query(
-      collection(db, "posts"),
-      where(
-        "keywords",
-        "array-contains-any",
-        searchInput.split(" ").map((value) => value.toUpperCase())
-      )
-    );
-    const querySnapshot = await getDocs(q);
-    const data = querySnapshot.docs.map((value) => value.data());
-    console.log(data);
+    return navigate("/search?q=" + searchInput);
   };
   const searchInputChangehandler = (event) => {
     setSearchInput(event.target.value);
@@ -65,6 +50,7 @@ const DefaultNavbar = () => {
           <input
             type="text"
             name="search"
+            placeholder="Search"
             className={searchClasses}
             autoComplete="off"
             onChange={searchInputChangehandler}
