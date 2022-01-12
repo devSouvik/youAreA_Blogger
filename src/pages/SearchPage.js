@@ -46,8 +46,10 @@ const SearchPageBody = () => {
   console.log(posts);
   return (
     <div className={classes.main}>
-      {loading && <p>Loading...</p>}
-      {!loading && posts.length === 0 && <h3>No data found</h3>}
+      {loading && <p className={classes.loading}>Loading...</p>}
+      {!loading && posts.length === 0 && (
+        <h3 className={classes.error}>No data found</h3>
+      )}
       {!loading &&
         posts.map((blog, index) => <ProfilePageCard key={index} {...blog} />)}
     </div>
