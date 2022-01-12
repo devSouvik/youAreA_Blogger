@@ -7,6 +7,14 @@ const FrontPageCard = (props) => {
       <div className={classes.body}>
         <div className={classes["body__header"]}>
           <div className={classes.imagediv}>
+            {props.author.profile_picture && (
+              <img
+                src={props.author.profile_picture}
+                alt="person"
+                className={classes.image}
+              />
+            )}
+
             {/* <img src={person} alt="person" className={classes.image} /> */}
           </div>
           {props.author && props.author.name && (

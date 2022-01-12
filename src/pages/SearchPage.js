@@ -45,7 +45,7 @@ const SearchPageBody = () => {
   }, [searchParams]);
   console.log(posts);
   return (
-    <div>
+    <div className={classes.main}>
       {loading && <p>Loading...</p>}
       {!loading && posts.length === 0 && <h3>No data found</h3>}
       {!loading &&

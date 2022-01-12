@@ -41,13 +41,17 @@
 .imagediv {
     width: 40px;
     height: 40px;
-
+    border-radius: 50px;
 }
 
 .imagediv {
     border-radius: 50px;
     background-color: rgb(143, 139, 139);
     margin-right: 8px;
+}
+
+.image {
+    border: 1px solid grey;
 }
 
 .postWrapper {
