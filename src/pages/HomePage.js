@@ -19,7 +19,7 @@ import { auth, db } from "../firebase";
 
 let dummyUserList = [
   {
-    name: "souvik guria",
+    name: "Ansuhree Das",
     bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, sed?",
     profile_pic: user,
   },

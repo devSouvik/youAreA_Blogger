@@ -1,5 +1,5 @@
 // import "./Form.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 // MUI imports
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -11,6 +11,11 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
 import FormHelperText from "@mui/material/FormHelperText";
+
+import { GlobalContext } from "../../contexts/GlobalContext";
+
+import { doc, updateDoc, collection } from "firebase/firestore";
+import { auth, db } from "../../firebase";
 
 const useStyles = makeStyles({
   helperText: {
@@ -35,6 +40,36 @@ export default function Form() {
   };
 
   const classes = useStyles();
+
+  const { user } = useContext(GlobalContext);
+
+  const userCollectionRef = doc(db, "users", user.id);
+
+  // const updateDetails = async (id, name, email, bio, gender) => {
+  //   await updateDoc(userCollectionRef, {});
+  //   const userDoc = doc(db, "users", id);
+  //   const newFields = { name: name, email: email, bio: bio, gender: gender };
+  //   await updateDoc(userDoc, newFields);
+  //   alert("Successfully updated !");
+
+  // };
+
+  const updateDetails = async () => {
+    await updateDoc(userCollectionRef, {
+      name: name,
+      email: email,
+      bio: bio,
+      gender: gender,
+    })
+      .then(function () {
+        alert("updated successfully !!");
+      })
+      .catch(function (error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
+  };
+
   return (
     <>
       <TextField
@@ -120,6 +155,9 @@ export default function Form() {
       </Box>
 
       <Button
+        onClick={() => {
+          updateDetails();
+        }}
         sx={{ fontWeight: "bold" }}
         variant="contained"
         endIcon={<UpgradeIcon />}
