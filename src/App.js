@@ -104,7 +104,7 @@ function App() {
           }
         />
         <Route
-          path="/profile-page"
+          path="/profile/:userId"
           element={
             <Auth auth={isAuthenticated}>
               <ProfilePage />

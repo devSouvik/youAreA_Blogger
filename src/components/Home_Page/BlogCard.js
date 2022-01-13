@@ -13,6 +13,7 @@ import { useContext, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 
 import { Markup } from "interweave";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   flareBtn: {
@@ -77,6 +78,7 @@ export default function BlogCard({
   children,
   time,
   dp,
+  id,
   link,
 }) {
   const classes = useStyles();
@@ -94,10 +96,14 @@ export default function BlogCard({
           subheaderTypographyProps={{
             fontWeight: "bold",
           }}
-          avatar={<Avatar alt="" src={dp} sx={{ width: 44, height: 44 }} />}
+          avatar={
+            <Link to={`/profile/${id}`} >
+              <Avatar alt="" src={dp} sx={{ width: 44, height: 44 }} />
+            </Link>
+          }
           action={children}
           title={title}
-          subheader={author}
+          subheader={<Link to={`/profile/${id}`} >{author}</Link>}
         />
         <CardContent>
           {/* <div dangerouslySetInnerHTML={desc} /> */}

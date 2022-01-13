@@ -6,58 +6,18 @@ import ProfilePageCard from "./ProfilePageCard";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
-
-const blogs = [
-  {
-    author: "Anushree das",
-    title: "In Software, When an Engineer exits the Team",
-    bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
-    date: "22 Oct",
-    readTime: "5 min",
-    profession: "Job",
-  },
-  {
-    author: "Anushree das",
-    title: "In Software, When an Engineer exits the Team",
-    bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
-    date: "22 Oct",
-    readTime: "5 min",
-    profession: "Job",
-  },
-  {
-    author: "Anushree das",
-    title: "In Software, When an Engineer exits the Team",
-    bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
-    date: "22 Oct",
-    readTime: "5 min",
-    profession: "Job",
-  },
-  {
-    author: "Anushree das",
-    title: "In Software, When an Engineer exits the Team",
-    bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
-    date: "22 Oct",
-    readTime: "5 min",
-    profession: "Job",
-  },
-  {
-    author: "Anushree das",
-    title: "In Software, When an Engineer exits the Team",
-    bio: "lorem ipsum anushree das In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
-    date: "22 Oct",
-    readTime: "5 min",
-    profession: "Technology",
-  },
-];
+import { useParams } from "react-router-dom";
 
 const ProfileBody = () => {
   const { user } = useContext(GlobalContext);
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
+  const { userId } = useParams();
+
   useEffect(() => {
     setLoading(true);
     const postsRef = collection(db, "posts");
-    const q = query(postsRef, where("author.id", "==", user.id));
+    const q = query(postsRef, where("author.id", "==", userId));
     getDocs(q)
       .then((result) => {
         const docs = result.docs.map((v) => {
@@ -74,12 +34,12 @@ const ProfileBody = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [user.id]);
+  }, [userId]);
   return (
     <div className={classes.main}>
       <ProfileHeader />
       <div className={classes.seperatordiv}>
-        <p> My Posts</p>
+        <p>Posts</p>
         <hr />
       </div>
       {loading && <p>Loading...</p>}

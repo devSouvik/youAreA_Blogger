@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 // import { BeatLoader } from "react-spinners";
 import loader from "../../assets/infinityloader.svg";
+import { useEffect, useState } from "react";
 
 const initialValue = {
   email: "",
@@ -21,6 +22,13 @@ const validationSchema = Yup.object({
 });
 
 const LogInCard = () => {
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    if (error) {
+      alert(error);
+      setError(null);
+    }
+  }, [error]);
   const handleSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
     try {
@@ -30,13 +38,23 @@ const LogInCard = () => {
         values.password
       );
       console.log(userCredential);
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
+    } catch (e) {
+      const errorCode = e.code;
+      const errorMessage = e.message;
+      if (errorCode.includes("wrong-password"))
+      {
+        setError("Username or password is invalid");
+      }
+      else if (errorCode.includes("not-found")) {
+        setError("User does not exist");
+      }
+      else {
+        setError("Something went Wrong. Try again!");
+      }
+      console.log( errorCode,errorMessage);
+      setSubmitting(false);
       // ..
     } finally {
-      setSubmitting(false);
     }
   };
 

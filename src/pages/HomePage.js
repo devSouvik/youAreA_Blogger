@@ -72,6 +72,7 @@ function HomePage() {
                     <BlogCard
                       title={post.title}
                       desc={finalString}
+                      id={post.author.id}
                       author={post.author.name}
                       children={
                         post.author.id === auth.currentUser.uid && (

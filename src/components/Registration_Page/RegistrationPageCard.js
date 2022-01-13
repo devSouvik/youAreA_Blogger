@@ -8,6 +8,8 @@ import { auth, db } from "../../firebase";
 import classes from "./RegistrationPageCard.module.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import loader from "../../assets/infinityloader.svg";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // import { BeatLoader } from "react-spinners";
 
 const initialValue = {
@@ -32,6 +34,13 @@ const validationSchema = Yup.object({
 });
 
 const RegistrationPageCard = () => {
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    if (error) {
+      alert(error);
+      setError(null);
+    }
+  }, [error]);
   const handleSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
     try {
@@ -57,6 +66,11 @@ const RegistrationPageCard = () => {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
+      if (errorCode.includes("email-already-in-use")) {
+        setError("User already exists");
+      } else {
+        setError("Something went Wrong. Try again!");
+      }
       console.log(errorCode, errorMessage);
       // ..
     } finally {
@@ -170,6 +184,10 @@ const RegistrationPageCard = () => {
             ) : (
               <button className={classes.loginButton}>Register</button>
             )}
+            <h6>or</h6>
+            <Link className={classes.createaccount} to="/signin">
+              Sign in
+            </Link>
           </Form>
         )}
       </Formik>

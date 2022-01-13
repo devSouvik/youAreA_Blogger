@@ -62,7 +62,7 @@ const DropDownModal = ({ isVisible, user, logoutHandler }) => {
           </Link>
         </li>
         <li>
-          <Link to="/profile-page">
+          <Link to={"/profile/" + user.id}>
             <i className={`fa-solid ${classes.allicon} fa-user`}></i>
             <span>My profile</span>
           </Link>

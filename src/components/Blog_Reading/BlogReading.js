@@ -6,6 +6,7 @@ import { db } from "../../firebase";
 import classes from "./BlogReading.module.css";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import Error from "../common/Error";
 
 const BlogReading = () => {
   const { postId } = useParams();
@@ -33,7 +34,7 @@ const BlogReading = () => {
     return <h4>Loading...</h4>;
   }
   if (!post) {
-    return <h2>error</h2>;
+    return <Error />;
   }
 
   const deletePost = async () => {

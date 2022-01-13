@@ -39,6 +39,7 @@ const blogs = [
 
 const FrontPageBody = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     setLoading(true);
@@ -50,9 +51,11 @@ const FrontPageBody = () => {
         const docs = result.docs.map((v) => {
           return v.data();
         });
+        console.log('docs',docs);
         setPosts(docs);
       })
       .catch((error) => {
+        setError(error)
         console.log(error);
       })
       .finally(() => {
@@ -67,6 +70,7 @@ const FrontPageBody = () => {
       </h3>
       <div className={classes.main}>
         {loading && <p>Loading...</p>}
+        {!loading && error && <h2>Oops something went wrong!</h2> }
         {!loading &&
           posts.map((blog, index) => <FrontPageCard key={index} {...blog} />)}
       </div>
